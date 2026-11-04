@@ -1,0 +1,670 @@
+﻿---
+// src/pages/index.astro - OUTSIDEЯ /// Bottega & Wallet Personale
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="OUTSIDEЯ /// Bottega, Officina & Wallet">
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#052e16" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Outsider" />
+
+  <div class="min-h-screen bg-stone-100 text-green-950 font-sans overflow-x-hidden pb-24 md:pb-12 selection:bg-emerald-500 selection:text-white">
+    
+    <style is:global>
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 16s linear infinite;
+      }
+      @keyframes bike-routine {
+        0% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(1); }
+        18% { transform: translateX(28vw) translateY(0) rotate(-32deg) scaleX(1); }
+        30% { transform: translateX(48vw) translateY(0) rotate(0deg) scaleX(1); }
+        37% { transform: translateX(62vw) translateY(-45px) rotate(-90deg) scaleX(1); }
+        40% { transform: translateX(70vw) translateY(-70px) rotate(-180deg) scaleX(1); }
+        45% { transform: translateX(85vw) translateY(0) rotate(-360deg) scaleX(1); }
+        48% { transform: translateX(112vw) translateY(0) rotate(0deg) scaleX(1); }
+        49% { transform: translateX(112vw) translateY(0) rotate(0deg) scaleX(-1); }
+        53% { transform: translateX(100vw) translateY(0) rotate(0deg) scaleX(-1); }
+        75% { transform: translateX(45vw) translateY(0) rotate(-28deg) scaleX(-1); }
+        98% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(-1); }
+        100% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(1); }
+      }
+      .stunt-bike {
+        position: absolute;
+        bottom: 6px;
+        left: 0;
+        animation: bike-routine 12s linear infinite;
+        z-index: 25;
+        pointer-events: none;
+        transform-origin: 16px 24px;
+      }
+      .brutal-shadow {
+        box-shadow: 6px 6px 0px #052e16;
+        transition: all 0.1s ease-in-out;
+      }
+      .brutal-shadow:hover {
+        box-shadow: 2px 2px 0px #052e16;
+        transform: translate(4px, 4px);
+      }
+    </style>
+
+    <!-- BANNER PWA INSTALL -->
+    <div id="pwa-install-bar" class="bg-yellow-400 border-b-4 border-green-950 p-3 font-mono text-xs font-bold text-green-950 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">📲</span>
+          <span id="pwa-install-text">INSTALLA OUTSIDER SUL TELEFONO PER GESTIRE I TUOI BULLONI</span>
+        </div>
+        <button id="pwa-install-trigger" class="bg-green-950 text-white px-3 py-1 uppercase text-[11px] border-2 border-green-950 brutal-shadow shrink-0 hover:bg-emerald-600">
+          Aggiungi a Home
+        </button>
+      </div>
+    </div>
+
+    <!-- MODALE GUIDA IPHONE -->
+    <div id="ios-guide-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <div class="bg-stone-100 border-4 border-green-950 p-6 max-w-sm w-full brutal-shadow font-mono space-y-4 text-green-950">
+        <div class="flex justify-between items-center border-b-2 border-green-950 pb-2">
+          <strong class="text-sm uppercase">Come installare su iPhone:</strong>
+          <button id="close-ios-modal" class="text-xl font-black">✕</button>
+        </div>
+        <ol class="list-decimal list-inside text-xs space-y-2">
+          <li>Premi il tasto <strong>Condividi</strong> in basso su Safari (icona quadrato con freccia in alto).</li>
+          <li>Scorri l'elenco e tocca <strong>"Aggiungi alla schermata Home"</strong>.</li>
+          <li>Conferma in alto a destra: avrai la bottega accessibile senza barre del browser.</li>
+        </ol>
+        <button id="dismiss-ios-modal" class="w-full bg-green-950 text-yellow-400 py-2 uppercase font-black text-xs border-2 border-green-950">
+          Ho Capito
+        </button>
+      </div>
+    </div>
+
+    <!-- MODALE CREAZIONE MATRICOLA -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <div class="bg-stone-100 border-4 border-green-950 p-6 max-w-md w-full brutal-shadow font-mono space-y-4 text-green-950">
+        <div class="border-b-4 border-green-950 pb-2">
+          <span class="text-[10px] text-red-600 font-bold uppercase">Registrazione Matricola</span>
+          <h3 class="text-2xl font-black uppercase">Attiva il Tuo Profilo</h3>
+        </div>
+        <p class="text-xs text-green-900 leading-relaxed font-bold">
+          Associa i tuoi Bulloni alla tua matricola personale. Nessuna password da ricordare: serve solo il tuo numero per il riconoscimento al bancone.
+        </p>
+        
+        <form id="profile-form" class="space-y-3 text-xs">
+          <div>
+            <label class="block font-bold uppercase mb-1">Nome e Cognome:</label>
+            <input type="text" id="input-name" required placeholder="es. Marco Rossi" class="w-full p-2.5 bg-white border-2 border-green-950 font-mono text-sm focus:bg-yellow-100 outline-none" />
+          </div>
+          <div>
+            <label class="block font-bold uppercase mb-1">Numero WhatsApp (per avvisi &amp; banco):</label>
+            <input type="tel" id="input-phone" required placeholder="es. 347 1234567" class="w-full p-2.5 bg-white border-2 border-green-950 font-mono text-sm focus:bg-yellow-100 outline-none" />
+          </div>
+          <button type="submit" class="w-full bg-emerald-500 text-green-950 py-3 uppercase font-black text-sm border-2 border-green-950 brutal-shadow hover:bg-yellow-400">
+            Genera Tessera &amp; Incassa 5 Bulloni Benvenuto →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- NOTIFICA TOAST -->
+    <div id="app-toast" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-emerald-500 text-green-950 border-4 border-green-950 px-6 py-3 font-black uppercase font-mono tracking-widest brutal-shadow text-center">
+      Operazione Conclusa.
+    </div>
+
+    <!-- TICKER -->
+    <div class="bg-red-600 text-stone-100 border-b-4 border-green-950 overflow-hidden py-1.5 font-black uppercase text-sm sm:text-base flex items-center z-40 relative font-mono">
+      <div class="animate-marquee">
+        <span class="mx-6">10 BULLONI = 20.00 EUR (+1 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">25 BULLONI = 50.00 EUR (+4 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">TESSERA NOMINATIVA DI BOTTEGA</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">MEETING POINT UFFICIALE OASY ASD</span><span class="mx-6 text-green-950">///</span>
+      </div>
+    </div>
+
+    <!-- HEADER / DASHBOARD APP -->
+    <header class="border-b-4 border-green-950 bg-stone-100 p-3 sm:p-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="border-2 border-green-950 bg-white p-1">
+          <img src="/images/Logo.jpg" alt="Logo Outsider" class="w-8 h-8 object-contain" onerror="this.src='/images/Logo.png'" />
+        </div>
+        <div>
+          <h1 class="text-xl sm:text-3xl font-black uppercase tracking-tighter leading-none">
+            OUTSIDE<span class="inline-block -scale-x-100 text-red-600">R</span> <span class="text-stone-400 text-xs sm:text-sm">SASSELLO /// 17046</span>
+          </h1>
+          <div class="flex items-center gap-2 pt-0.5">
+            <span id="user-badge" class="text-[10px] font-mono text-emerald-800 font-bold uppercase">● Ospite non collegato</span>
+            <button id="edit-profile-btn" class="text-[9px] font-mono underline uppercase text-stone-500 hover:text-green-950">[Modifica Profilo]</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Bulloni Balance Badge -->
+      <a href="#wallet" class="flex items-center gap-2 border-2 sm:border-4 border-green-950 bg-yellow-400 px-3 py-1.5 font-black uppercase brutal-shadow text-green-950 font-mono text-xs sm:text-sm">
+        <span>🔩</span>
+        <span><strong id="header-bulloni-count">0</strong> BULLONI</span>
+      </a>
+    </header>
+
+    <!-- HERO SECTION CON BICI STUNT -->
+    <section class="relative px-4 py-12 md:py-20 border-b-4 border-green-950 overflow-hidden bg-stone-200">
+      <div class="stunt-bike">
+        <svg viewBox="0 0 32 32" width="70" height="70" style="shape-rendering: crispEdges;">
+          <g fill="#052e16">
+            <rect x="2" y="20" width="8" height="8"></rect>
+            <rect x="4" y="22" width="4" height="4" fill="#f5f5f4"></rect>
+            <rect x="5" y="23" width="2" height="2" fill="#052e16"></rect>
+            <rect x="22" y="20" width="8" height="8"></rect>
+            <rect x="24" y="22" width="4" height="4" fill="#f5f5f4"></rect>
+            <rect x="25" y="23" width="2" height="2" fill="#052e16"></rect>
+            <rect x="6" y="23" width="18" height="2"></rect>
+            <rect x="10" y="14" width="2" height="11"></rect>
+            <rect x="24" y="14" width="2" height="11"></rect>
+            <rect x="10" y="14" width="14" height="2"></rect>
+            <rect x="7" y="12" width="6" height="2"></rect>
+            <rect x="23" y="12" width="6" height="2"></rect>
+            <rect x="27" y="10" width="2" height="4"></rect>
+          </g>
+        </svg>
+      </div>
+
+      <div class="absolute bottom-0 left-0 w-full border-b-4 border-dashed border-green-950 pointer-events-none z-10"></div>
+
+      <div class="max-w-7xl mx-auto relative z-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-l-8 border-red-600 pl-4 sm:pl-8">
+        <div class="md:col-span-7 space-y-4">
+          <div class="inline-block bg-yellow-400 text-green-950 font-black uppercase px-3 py-1 text-xs sm:text-sm font-mono border-2 border-green-950 shadow-[3px_3px_0px_#052e16]">
+            ⚡ Bottega &bull; Officina Meccanica &bull; Sassello Centro
+          </div>
+          <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
+            I tuoi crediti. La tua tessera.
+          </h2>
+          <p class="font-mono text-xs sm:text-sm text-green-900 leading-relaxed font-bold">
+            Mostra la tua tessera virtuale al bancone tra muri in pietra, volte in mattoni e tubi zincati. Scala i Bulloni per manutenzioni, ricambi e abbigliamento tecnico.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2 font-mono text-xs font-bold">
+            <a href="#wallet" class="bg-emerald-500 text-green-950 px-5 py-3 uppercase border-2 sm:border-4 border-green-950 brutal-shadow">
+              Vedi La Mia Tessera 🔩
+            </a>
+            <button id="hero-setup-profile" class="bg-white text-green-950 px-5 py-3 uppercase border-2 sm:border-4 border-green-950 brutal-shadow">
+              Configura Matricola 🪪
+            </button>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 relative">
+          <div class="absolute inset-0 bg-red-600 border-4 border-green-950 brutal-shadow transform rotate-2 translate-x-2 translate-y-2"></div>
+          <img src="/images/bottega-interni.jpg" alt="Bottega Sassello" class="relative z-10 w-full h-auto border-4 border-green-950 aspect-[4/3] object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE WALLET PERSONALE -->
+    <section id="wallet" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-100">
+      <div class="max-w-7xl mx-auto space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b-4 border-green-950 pb-4">
+          <div>
+            <span class="text-xs font-mono font-bold text-amber-600 uppercase">Valuta &amp; Matricola Personale</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">Il Tuo Wallet Personale</h2>
+          </div>
+          <div class="bg-stone-200 border-2 border-green-950 p-2 text-right font-mono text-xs">
+            <span>Rapporto: <strong>1 Bullone ≈ 2,00 EUR</strong></span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Card Tessera Virtuale Personale Dinamica -->
+          <div class="lg:col-span-5 bg-green-950 text-stone-100 border-4 border-green-950 p-6 brutal-shadow space-y-6 relative overflow-hidden">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">TESSERA DELL'OFFICINA</span>
+                <span id="card-holder-name" class="text-xl font-black uppercase font-mono">OSPITE TEMPORANEO</span>
+                <span id="card-holder-id" class="text-xs font-mono text-stone-400 block pt-0.5">MATRICOLA: SSL-NON-REGISTRATA</span>
+              </div>
+              <span class="text-3xl">🔩</span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-xs font-mono text-stone-400">SALDO BULLONI ATTUALE</span>
+              <div class="text-5xl font-black font-mono text-yellow-400">
+                <span id="wallet-balance-display">0</span> <span class="text-xl text-stone-300">BULLONI</span>
+              </div>
+              <div class="text-[11px] font-mono text-stone-400">Valore spendibile in bottega: <span id="euro-balance-display">0.00</span> EUR</div>
+            </div>
+
+            <!-- Progresso Volta d'Onore -->
+            <div class="space-y-1 pt-2 border-t border-green-800 font-mono text-xs">
+              <div class="flex justify-between text-[11px]">
+                <span>Programma: <strong id="level-badge" class="text-emerald-400">Volta d'Onore</strong></span>
+                <span>Livello: <strong>Socio Bottega</strong></span>
+              </div>
+              <div class="w-full bg-green-900 h-3 border border-green-700">
+                <div id="level-progress-bar" class="bg-yellow-400 h-full w-[25%]"></div>
+              </div>
+            </div>
+
+            <!-- Codice Univoco per il Banco Cassa -->
+            <div class="bg-stone-100 text-green-950 p-4 border-2 border-green-950 font-mono text-xs flex items-center justify-between gap-4">
+              <div>
+                <strong class="block text-[12px] uppercase">Codice Cassa Personale</strong>
+                <span id="cassa-code-display" class="text-xs font-black tracking-widest text-red-600 block pt-0.5">SSL-0000</span>
+                <span class="text-[9px] text-stone-500">Mostra al bancone per accrediti e sconti</span>
+              </div>
+              <div class="w-14 h-14 bg-green-950 text-white flex flex-col items-center justify-center p-1 text-[9px] font-bold text-center border border-black shrink-0">
+                <span>PASS</span>
+                <span>OFFICINA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ricariche Rapide Bulloni -->
+          <div class="lg:col-span-7 space-y-4">
+            <h3 class="text-xl font-black uppercase font-mono">Ricarica Bulloni nel Wallet</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
+              <div class="border-4 border-green-950 bg-white p-5 brutal-shadow space-y-3">
+                <div class="flex justify-between items-baseline">
+                  <span class="font-black text-xl">10 BULLONI</span>
+                  <span class="text-2xl font-black text-red-600">20.00€</span>
+                </div>
+                <div class="bg-yellow-200 text-green-950 text-xs font-bold p-1 border border-green-950 text-center">
+                  +1 BULLONE EXTRA OMAGGIO
+                </div>
+                <p class="text-[11px] text-green-800 leading-tight">
+                  Valido per regolazione cambio, centratura ruota o sconti su accessori e abbigliamento.
+                </p>
+                <button class="charge-btn w-full bg-green-950 text-yellow-400 py-3 uppercase font-black text-sm border-2 border-green-950 hover:bg-emerald-500 hover:text-green-950 transition-colors" data-pack="10" data-bonus="1" data-price="20">
+                  Ricarica 10 (+1 Extra) →
+                </button>
+              </div>
+
+              <div class="border-4 border-green-950 bg-yellow-400 p-5 brutal-shadow space-y-3 relative">
+                <span class="absolute -top-3 right-3 bg-red-600 text-white text-[9px] font-black px-2 py-0.5 uppercase border-2 border-green-950">
+                  Più Conveniente
+                </span>
+                <div class="flex justify-between items-baseline">
+                  <span class="font-black text-xl">25 BULLONI</span>
+                  <span class="text-2xl font-black text-green-950">50.00€</span>
+                </div>
+                <div class="bg-white text-green-950 text-xs font-bold p-1 border border-green-950 text-center">
+                  +4 BULLONI EXTRA OMAGGIO
+                </div>
+                <p class="text-[11px] text-green-900 leading-tight">
+                  Include 1 ingresso per l'<strong>Estrazione del Tubo Zincato</strong>.
+                </p>
+                <button class="charge-btn w-full bg-green-950 text-white py-3 uppercase font-black text-sm border-2 border-green-950 hover:bg-red-600 transition-colors" data-pack="25" data-bonus="4" data-price="50">
+                  Ricarica 25 (+4 Extra) →
+                </button>
+              </div>
+            </div>
+
+            <div class="border-4 border-green-950 bg-red-600 text-white p-4 brutal-shadow flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+              <div>
+                <strong class="block text-sm uppercase">Estrazione del Tubo Zincato</strong>
+                <span>Prossima estrazione premi riservata ai titolari della tessera:</span>
+              </div>
+              <div class="bg-white text-green-950 px-3 py-1.5 font-black text-base border-2 border-green-950">
+                <span id="countdown-pwa">3G 00:00:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE SCORTE IN ESAURIMENTO -->
+    <section id="alerts" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-200">
+      <div class="max-w-7xl mx-auto space-y-8 font-mono">
+        <div class="flex items-center justify-between border-b-4 border-green-950 pb-4">
+          <div>
+            <span class="text-xs font-bold text-red-600 uppercase">Alert Inventario Live</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">Scorte Limitate</h2>
+          </div>
+          <button id="test-alert-btn" class="text-xs font-bold uppercase bg-stone-100 border-2 border-green-950 px-3 py-1 brutal-shadow hover:bg-yellow-400">
+            🔔 Allerta Bottega
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
+            <span class="absolute -top-3 left-4 bg-red-600 text-white text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
+              ULTIMI 2 PEZZI
+            </span>
+            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
+              <img src="/images/helmet-fox.jpg" alt="Casco FOX MIPS" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-black text-base uppercase">Casco FOX MIPS</h4>
+                <span class="font-bold text-red-600">140€</span>
+              </div>
+              <p class="text-[11px] text-green-800 pt-1">Taglia M/L. Non ne arrivano altri prima di primavera.</p>
+            </div>
+            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Casco FOX MIPS" data-bulloni="5">
+              Blocca 24h (5 Bulloni)
+            </button>
+          </div>
+
+          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
+            <span class="absolute -top-3 left-4 bg-amber-500 text-green-950 text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
+              SOLO 3 DISPONIBILI
+            </span>
+            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
+              <img src="/images/wear-flannel.jpg" alt="Flanella" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-black text-base uppercase">Overshirt Flanella</h4>
+                <span class="font-bold text-red-600">85€</span>
+              </div>
+              <p class="text-[11px] text-green-800 pt-1">400g antivento da bosco e officina.</p>
+            </div>
+            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Overshirt Flanella" data-bulloni="5">
+              Blocca 24h (5 Bulloni)
+            </button>
+          </div>
+
+          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
+            <span class="absolute -top-3 left-4 bg-emerald-500 text-green-950 text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
+              NUOVO ARRIVO
+            </span>
+            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
+              <img src="/images/wear-beanie.jpg" alt="Berretto Beanie" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-black text-base uppercase">Beanie Lana Spessa</h4>
+                <span class="font-bold text-red-600">28€</span>
+              </div>
+              <p class="text-[11px] text-green-800 pt-1">Tenuta termica rigida per fine uscita.</p>
+            </div>
+            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Beanie Lana Spessa" data-bulloni="2">
+              Blocca 24h (2 Bulloni)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE OASY ASD: SINCRONIZZATA CON IL SITO UFFICIALE -->
+    <section id="asd-oasy" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-100">
+      <div class="max-w-7xl mx-auto space-y-8 font-mono">
+        <div class="border-4 border-green-950 bg-emerald-600 text-stone-100 p-6 brutal-shadow flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-1">
+            <span class="bg-stone-100 text-green-950 text-[10px] font-black uppercase px-2 py-0.5">
+              SETTORE SPORTIVO NON-PROFIT &bull; CSEN
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">
+              Outdoor Activity Sassello ASD
+            </h2>
+            <p class="text-xs text-emerald-100 max-w-xl">
+              Associazione affiliata CSEN e iscritta al RASD. Calendario uscite, tesseramento assicurativo e tutela dei sentieri del Beigua Geopark.
+            </p>
+          </div>
+          <a href="https://asdoasy.it" target="_blank" rel="noopener noreferrer" class="bg-stone-100 text-green-950 px-5 py-3 font-black uppercase text-xs border-2 border-green-950 brutal-shadow shrink-0 hover:bg-yellow-400 text-center">
+            Vai al Sito Ufficiale ASD (asdoasy.it) 🌲
+          </a>
+        </div>
+
+        <div class="border-4 border-green-950 bg-white p-6 brutal-shadow grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-6 space-y-3">
+            <span class="text-xs font-bold text-red-600 uppercase">Uscita Ufficiale in Calendario</span>
+            <h3 class="text-2xl font-black uppercase leading-none">Al Faggio Secolare &bull; Castagnata</h3>
+            <p class="text-xs text-green-900 leading-relaxed">
+              Tappa ristoro in Bergnun, visita al patriarca arboreo e rientro in paese per le caldarroste. Pacco gara garantito con iscrizione online.
+            </p>
+            <div class="grid grid-cols-3 gap-2 text-center text-[11px] pt-1">
+              <div class="bg-stone-100 p-2 border border-green-950"><strong>11 KM</strong><br/>Sviluppo</div>
+              <div class="bg-stone-100 p-2 border border-green-950"><strong>+460 M</strong><br/>Dislivello</div>
+              <div class="bg-stone-100 p-2 border border-green-950"><strong>APERTO</strong><br/>Cammino/MTB</div>
+            </div>
+          </div>
+
+          <div class="md:col-span-6 bg-stone-100 border-2 border-green-950 p-4 space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold">
+              <span>ISCRIZIONE &amp; COPERTURA CSEN</span>
+              <span class="text-emerald-700">✓ Ufficiale OASY</span>
+            </div>
+            <p class="text-[11px] text-stone-600">
+              Registrati direttamente sulla piattaforma ufficiale di OASY ASD con saldo carta Stripe o riserva al ritrovo.
+            </p>
+            <a href="https://asdoasy.it/uscite/faggio-castagnata" target="_blank" class="w-full bg-green-950 text-yellow-400 py-3 uppercase font-black text-xs border-2 border-green-950 brutal-shadow flex items-center justify-center gap-2 hover:bg-emerald-600 hover:text-white transition-colors text-center">
+              <span>✍️</span> Iscriviti all'Uscita su asdoasy.it
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER BOTTEGA -->
+    <footer class="p-6 border-t-4 border-green-950 bg-stone-200 font-mono text-xs text-green-900 text-center space-y-2">
+      <div class="font-black text-sm uppercase">OUTSIDEЯ BOTTEGA &bull; SASSELLO (SV) 17046</div>
+      <p class="text-[11px]">Centro Storico &bull; Pareti in Pietra, Volte &amp; Tubi Zincati &bull; Meeting Point OASY ASD</p>
+      <div class="flex justify-center gap-4 text-[11px] pt-2 font-bold">
+        <a href="https://wa.me/393473590128" target="_blank" rel="noopener noreferrer" class="hover:underline">WhatsApp Bottega</a>
+        <span>&bull;</span>
+        <a href="#wallet" class="hover:underline">Tessera Personale</a>
+        <span>&bull;</span>
+        <button id="reset-profile-btn" class="text-red-700 underline uppercase">Resetta Profilo</button>
+      </div>
+    </footer>
+
+    <!-- DOCK BAR MOBILE -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-stone-100 border-t-4 border-green-950 grid grid-cols-4 z-40 text-center font-mono text-[10px] font-black uppercase">
+      <a href="#" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300">
+        <span class="text-base">🚲</span>
+        <span>Bottega</span>
+      </a>
+      <a href="#wallet" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300 bg-yellow-400/30">
+        <span class="text-base">🪪</span>
+        <span>Tessera</span>
+      </a>
+      <a href="#alerts" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300">
+        <span class="text-base">🚨</span>
+        <span>Scorte</span>
+      </a>
+      <a href="#asd-oasy" class="py-2.5 flex flex-col items-center gap-0.5 hover:bg-yellow-300">
+        <span class="text-base">🌲</span>
+        <span>OASY ASD</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- SCRIPT LOGICA PROFILO PERSONALE & PWA -->
+  <script is:inline>
+    // 1. REGISTRAZIONE SERVICE WORKER
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch((err) => console.log('SW fail:', err));
+      });
+    }
+
+    // 2. SISTEMA DI INSTALLAZIONE HOME
+    let deferredPrompt;
+    const installBar = document.getElementById('pwa-install-bar');
+    const installTrigger = document.getElementById('pwa-install-trigger');
+    const iosModal = document.getElementById('ios-guide-modal');
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    if (isStandalone) {
+      if (installBar) installBar.classList.add('hidden');
+    } else {
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBar) installBar.classList.remove('hidden');
+      });
+
+      if (installTrigger) {
+        installTrigger.addEventListener('click', async () => {
+          if (isIOS) {
+            if (iosModal) iosModal.classList.remove('hidden');
+          } else if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+              if (installBar) installBar.classList.add('hidden');
+            }
+            deferredPrompt = null;
+          } else {
+            alert("Per installare l'app, tocca i tre puntini del browser in alto a destra e seleziona 'Aggiungi a schermata Home'.");
+          }
+        });
+      }
+    }
+
+    document.getElementById('close-ios-modal')?.addEventListener('click', () => iosModal?.classList.add('hidden'));
+    document.getElementById('dismiss-ios-modal')?.addEventListener('click', () => iosModal?.classList.add('hidden'));
+
+    // 3. GESTIONE PROFILO CLIENTE
+    const profileModal = document.getElementById('profile-modal');
+    const profileForm = document.getElementById('profile-form');
+    const userBadge = document.getElementById('user-badge');
+    const cardHolderName = document.getElementById('card-holder-name');
+    const cardHolderId = document.getElementById('card-holder-id');
+    const cassaCodeDisplay = document.getElementById('cassa-code-display');
+
+    function getProfile() {
+      const data = localStorage.getItem('outsider_profile');
+      return data ? JSON.parse(data) : null;
+    }
+
+    function saveProfile(name, phone) {
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const matricola = `SSL-${randomNum}`;
+      const profile = { name, phone, matricola, bulloni: 5 }; // 5 Bulloni omaggio
+      localStorage.setItem('outsider_profile', JSON.stringify(profile));
+      return profile;
+    }
+
+    function renderProfile() {
+      const profile = getProfile();
+      const bDisplay = document.getElementById('wallet-balance-display');
+      const hDisplay = document.getElementById('header-bulloni-count');
+      const eDisplay = document.getElementById('euro-balance-display');
+
+      if (profile) {
+        if (userBadge) userBadge.textContent = `● Socio: ${profile.name} (${profile.matricola})`;
+        if (cardHolderName) cardHolderName.textContent = profile.name;
+        if (cardHolderId) cardHolderId.textContent = `MATRICOLA: ${profile.matricola}`;
+        if (cassaCodeDisplay) cassaCodeDisplay.textContent = profile.matricola;
+
+        if (bDisplay) bDisplay.textContent = profile.bulloni;
+        if (hDisplay) hDisplay.textContent = profile.bulloni;
+        if (eDisplay) eDisplay.textContent = (profile.bulloni * 2).toFixed(2);
+      } else {
+        if (userBadge) userBadge.textContent = '● Ospite non registrato';
+        if (cardHolderName) cardHolderName.textContent = 'OSPITE TEMPORANEO';
+        if (cardHolderId) cardHolderId.textContent = 'MATRICOLA: NESSUNA';
+        if (cassaCodeDisplay) cassaCodeDisplay.textContent = 'SSL-OSPITE';
+        if (bDisplay) bDisplay.textContent = '0';
+        if (hDisplay) hDisplay.textContent = '0';
+        if (eDisplay) eDisplay.textContent = '0.00';
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('app-toast');
+      if (t) {
+        t.textContent = msg;
+        t.classList.remove('hidden');
+        setTimeout(() => t.classList.add('hidden'), 2500);
+      }
+    }
+
+    document.getElementById('edit-profile-btn')?.addEventListener('click', () => profileModal?.classList.remove('hidden'));
+    document.getElementById('hero-setup-profile')?.addEventListener('click', () => profileModal?.classList.remove('hidden'));
+
+    profileForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('input-name').value.trim();
+      const phone = document.getElementById('input-phone').value.trim();
+      if (name && phone) {
+        saveProfile(name, phone);
+        profileModal?.classList.add('hidden');
+        renderProfile();
+        showToast('BENVENUTO! PROFILO ATTIVO + 5 BULLONI ACCREDITATI!');
+      }
+    });
+
+    document.getElementById('reset-profile-btn')?.addEventListener('click', () => {
+      if (confirm('Vuoi cancellare i tuoi dati e i tuoi Bulloni da questo telefono?')) {
+        localStorage.removeItem('outsider_profile');
+        renderProfile();
+        showToast('Profilo rimosso.');
+      }
+    });
+
+    // Ricarica Bulloni (Simulazione con avviso cassa / predisposta a Stripe)
+    document.querySelectorAll('.charge-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        let profile = getProfile();
+        if (!profile) {
+          profileModal?.classList.remove('hidden');
+          return;
+        }
+        const pack = parseInt(btn.dataset.pack, 10);
+        const bonus = parseInt(btn.dataset.bonus, 10);
+        const price = btn.dataset.price;
+        
+        // Per ora accredita localmente e avvisa per il saldo al banco
+        profile.bulloni += pack + bonus;
+        localStorage.setItem('outsider_profile', JSON.stringify(profile));
+        renderProfile();
+        showToast(`+${pack + bonus} BULLONI PRENOTATI! Salda ${price}€ al bancone.`);
+      });
+    });
+
+    // Blocca Pezzi
+    document.querySelectorAll('.lock-item-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        let profile = getProfile();
+        if (!profile) {
+          profileModal?.classList.remove('hidden');
+          return;
+        }
+        const cost = parseInt(btn.dataset.bulloni, 10);
+        const item = btn.dataset.item;
+        if (profile.bulloni >= cost) {
+          profile.bulloni -= cost;
+          localStorage.setItem('outsider_profile', JSON.stringify(profile));
+          renderProfile();
+          showToast(`BLOCCATO! ${item} riservato a tuo nome.`);
+          btn.textContent = 'RISERVATO A TE ✓';
+          btn.disabled = true;
+          btn.classList.add('opacity-50');
+        } else {
+          showToast('BULLONI INSUFFICIENTI! Ricarica il tuo wallet.');
+        }
+      });
+    });
+
+    // Test Alert
+    document.getElementById('test-alert-btn')?.addEventListener('click', () => {
+      showToast('🚨 NOTIFICA BOTTEGA: Ultimo Casco FOX rimasto!');
+    });
+
+    // Countdown Tubo Zincato
+    let timeLeft = 259200;
+    const cd = document.getElementById('countdown-pwa');
+    setInterval(() => {
+      if (timeLeft > 0) timeLeft--;
+      const d = Math.floor(timeLeft / 86400);
+      const h = Math.floor((timeLeft % 86400) / 3600);
+      const m = Math.floor((timeLeft % 3600) / 60);
+      const s = timeLeft % 60;
+      if (cd) cd.textContent = `${d}G ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }, 1000);
+
+    renderProfile();
+  </script>
+</BaseLayout>

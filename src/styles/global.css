@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* 1. Definizione font locali */
+@font-face {
+  font-family: 'OutsiderHeading';
+  src: url('/fonts/TuoFont-Bold.woff2') format('woff2'); /* Sostituisci col nome esatto del tuo file */
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OutsiderMono';
+  src: url('/fonts/TuoFontMono.woff2') format('woff2'); /* Se hai un monospace personalizzato */
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Assegna le variabili del tema in Tailwind v4 */
+@theme {
+  --font-sans: 'OutsiderHeading', system-ui, sans-serif;
+  --font-mono: 'OutsiderMono', 'JetBrains Mono', monospace;
+
+  --color-iron-950: #08090a;
+  --color-iron-900: #121517;
+  --color-iron-800: #1f2428;
+  --color-iron-700: #333b42;
+  --color-zincwire: #8a99a8;
+  --color-brick: #9e3d2c;
+  --color-brickDark: #6b2417;
+  --color-brass: #d99b26;
+}
+
+@keyframes sgasaCycle {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg) drop-shadow(0 0 15px rgba(255, 30, 0, 0.5));
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.sgasa-chroma {
+  animation: sgasaShift 6s linear infinite;
+  mix-blend-mode: screen; /* Isola il colore invertito sul fondo scuro */
+  background: transparent;
+}

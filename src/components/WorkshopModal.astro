@@ -1,0 +1,423 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="OUTSIDEЯ /// 17046 Bottega Brutale">
+  <div class="min-h-screen bg-stone-100 text-green-950 font-sans overflow-x-hidden selection:bg-emerald-500 selection:text-white">
+    
+    <!-- CSS Animazioni e Stili Brutalisti -->
+    <style is:global>
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 15s linear infinite;
+      }
+      
+      /* Animazione Bici sincronizzata con il tracciato SVG:
+         - Rallenta durante la rampa di salita (0% -> 45%)
+         - Scolina sul dosso (45% -> 60%)
+         - Accelera a tutta velocità in discesa (60% -> 75%)
+         - Allungo finale sul piano (75% -> 100%) */
+      @keyframes trail-ride {
+        0% {
+          transform: translate(-10vw, 0px) rotate(-10deg);
+        }
+        20% {
+          transform: translate(15vw, -6px) rotate(-18deg);
+        }
+        45% {
+          /* Salita ripida: tempo dilatato (rallenta) e rotazione a -35° */
+          transform: translate(35vw, -48px) rotate(-35deg);
+        }
+        60% {
+          /* Cresta del colle: spiana a -8° */
+          transform: translate(52vw, -55px) rotate(-8deg);
+        }
+        75% {
+          /* Discesone veloce: tempo brevissimo (accelera) e inclinazione avanti +14° */
+          transform: translate(72vw, 4px) rotate(14deg);
+        }
+        88% {
+          /* Compressione al fondo: rialza la ruota davanti a -22° */
+          transform: translate(88vw, -12px) rotate(-22deg);
+        }
+        100% {
+          transform: translate(115vw, 0px) rotate(-12deg);
+        }
+      }
+
+      .bike-trail-runner {
+        position: absolute;
+        bottom: 28px;
+        left: 0;
+        animation: trail-ride 8s linear infinite;
+        z-index: 25;
+        pointer-events: none;
+        /* Perno di rotazione fissato sulla ruota posteriore */
+        transform-origin: 6px 24px;
+      }
+
+      .brutal-shadow {
+        box-shadow: 8px 8px 0px #052e16;
+        transition: all 0.1s ease-in-out;
+      }
+      .brutal-shadow:hover {
+        box-shadow: 2px 2px 0px #052e16;
+        transform: translate(6px, 6px);
+      }
+    </style>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="cart-toast" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-emerald-500 text-green-950 border-4 border-green-950 px-6 py-3 font-black uppercase tracking-widest brutal-shadow">
+      Aggiunto al carrello. Non si torna indietro.
+    </div>
+
+    <!-- INFINITE MARQUEE TICKER (Rules & Bulloni) -->
+    <div class="bg-red-600 text-stone-100 border-b-4 border-green-950 overflow-hidden py-2 font-black uppercase text-xl flex items-center z-50 relative font-mono">
+      <div class="animate-marquee">
+        <span class="mx-6">10 BULLONI = 20.00 EUR (+1 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">25 BULLONI = 50.00 EUR (+4 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">OUTSIDER SSL /// 17046</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">LA REGOLA DEL METALLO</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">10 BULLONI = 20.00 EUR (+1 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">25 BULLONI = 50.00 EUR (+4 EXTRA)</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">OUTSIDER SSL /// 17046</span><span class="mx-6 text-green-950">///</span>
+        <span class="mx-6">LA REGOLA DEL METALLO</span><span class="mx-6 text-green-950">///</span>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="border-b-4 border-green-950 flex flex-col md:flex-row justify-between items-center p-4 md:p-6 sticky top-0 bg-stone-100 z-40">
+      <div class="flex items-center gap-2 group cursor-pointer mb-4 md:mb-0 border-4 border-green-950 px-4 py-2 bg-white brutal-shadow">
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">
+          OUTSIDE<span class="inline-block -scale-x-100 text-red-600">R</span> <span class="text-stone-300">SSL ///</span> 17046
+        </h1>
+      </div>
+      
+      <nav class="flex gap-4 md:gap-8 font-black uppercase tracking-wider text-sm md:text-base border-4 border-green-950 bg-white px-6 py-3 font-mono">
+        <a href="#shop" class="hover:text-emerald-500 hover:scale-110 transition-transform">Lo Shop</a>
+        <a href="#officina" class="hover:text-yellow-500 hover:scale-110 transition-transform">L'Officina</a>
+        <a href="#sentieri" class="hover:text-red-600 hover:scale-110 transition-transform">Sentieri</a>
+      </nav>
+
+      <button id="cart-btn" class="hidden md:flex items-center gap-2 border-4 border-green-950 bg-yellow-400 px-6 py-3 font-black uppercase brutal-shadow text-green-950 font-mono">
+        <span>Carrello [<span id="cart-count">0</span>]</span>
+      </button>
+    </header>
+
+    <!-- HERO SECTION CON BICI E TERRENO ALTIMETRICO COERENTE -->
+    <section class="relative px-4 py-20 md:py-32 border-b-4 border-green-950 overflow-hidden bg-stone-200">
+      
+      <!-- BICI 8-BIT: IL PERNO DI ROTAZIONE È SULLA RUOTA POSTERIORE -->
+      <div class="bike-trail-runner">
+        <svg viewBox="0 0 32 32" width="90" height="90" style="shape-rendering: crispEdges;">
+          <g fill="#052e16">
+            <!-- Ruota dietro (Perno d'appoggio sul terreno) -->
+            <rect x="2" y="20" width="8" height="8"></rect>
+            <rect x="4" y="22" width="4" height="4" fill="#f5f5f4"></rect>
+            <rect x="5" y="23" width="2" height="2" fill="#052e16"></rect>
+            
+            <!-- Ruota davanti (Alzata) -->
+            <rect x="22" y="20" width="8" height="8"></rect>
+            <rect x="24" y="22" width="4" height="4" fill="#f5f5f4"></rect>
+            <rect x="25" y="23" width="2" height="2" fill="#052e16"></rect>
+            
+            <!-- Telaio -->
+            <rect x="6" y="23" width="18" height="2"></rect>
+            <rect x="10" y="14" width="2" height="11"></rect>
+            <rect x="24" y="14" width="2" height="11"></rect>
+            <rect x="10" y="14" width="14" height="2"></rect>
+            
+            <!-- Sella -->
+            <rect x="7" y="12" width="6" height="2"></rect>
+            
+            <!-- Manubrio -->
+            <rect x="23" y="12" width="6" height="2"></rect>
+            <rect x="27" y="10" width="2" height="4"></rect>
+          </g>
+        </svg>
+      </div>
+
+      <!-- PROFILO SENTIERO REALISTICO -->
+      <div class="absolute bottom-0 left-0 w-full h-24 pointer-events-none z-10">
+        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none">
+          <!-- Riempimento roccia/terra sottostante -->
+          <path 
+            d="M0,80 L200,75 C350,70 420,25 520,25 C620,25 680,85 750,85 L1000,80 L1000,100 L0,100 Z" 
+            fill="#d6d3d1"
+          />
+          <!-- Linea battuta del sentiero -->
+          <path 
+            d="M0,80 L200,75 C350,70 420,25 520,25 C620,25 680,85 750,85 L1000,80" 
+            stroke="#052e16" 
+            stroke-width="4" 
+            stroke-dasharray="10 6"
+          />
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto relative z-20 flex flex-col md:flex-row items-center justify-between gap-16 border-l-8 border-red-600 pl-6 md:pl-12">
+        <div class="flex-1 flex flex-col items-start">
+          <div class="bg-yellow-400 text-green-950 font-black uppercase px-4 py-2 mb-8 text-xl tracking-widest flex items-center gap-2 border-4 border-green-950 shadow-[4px_4px_0px_#052e16] font-mono">
+            ⚡ Officina / Abbigliamento / Meccanica
+          </div>
+          
+          <div class="mb-10 w-full max-w-sm md:max-w-md relative group cursor-crosshair">
+            <div class="absolute inset-0 bg-green-950 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+            <img 
+              src="/images/Logo.jpg" 
+              alt="OUTSIDER /// 17046 Logo" 
+              class="relative z-10 w-full h-auto bg-stone-900 border-4 border-green-950 p-4 object-contain invert brightness-200"
+              onerror="this.src='/images/Logo.png'"
+            />
+          </div>
+
+          <a href="#shop" class="bg-emerald-500 text-green-950 font-black text-2xl md:text-4xl px-12 py-6 uppercase tracking-widest border-4 border-green-950 brutal-shadow flex items-center gap-4 hover:bg-yellow-400 transition-colors">
+            Entra nella Bottega →
+          </a>
+        </div>
+
+        <div class="flex-1 w-full relative">
+          <div class="absolute inset-0 bg-red-600 border-4 border-green-950 brutal-shadow transform rotate-3 translate-x-4 translate-y-4"></div>
+          <img 
+            src="/images/bottega-interni.jpg" 
+            alt="L'Officina e lo Shop OUTSIDER a Sassello" 
+            class="relative z-10 w-full h-auto border-4 border-green-950 object-cover aspect-[4/3] grayscale hover:grayscale-0 transition-all duration-500" 
+          />
+          <div class="absolute -bottom-6 -left-6 bg-yellow-400 text-green-950 font-black text-2xl p-4 border-4 border-green-950 z-20 shadow-[4px_4px_0px_#052e16] -rotate-6 font-mono">
+            VOLTE IN COTTO & FERRO
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LO SHOP CON LE SCHEDE PRODOTTO -->
+    <section id="shop" class="p-4 md:p-16 border-b-4 border-green-950 bg-stone-200">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- GAMIFICATION BANNER BULLONI -->
+        <div class="border-4 border-green-950 bg-emerald-500 p-6 md:p-12 mb-16 brutal-shadow">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <div>
+              <h3 class="text-4xl md:text-6xl font-black uppercase text-green-950 mb-2">
+                La Regola del Metallo
+              </h3>
+              <p class="text-xl font-bold uppercase text-green-900 font-mono">Spendi. Accumula Bulloni. Scala la gerarchia.</p>
+            </div>
+            <div class="flex flex-col gap-4 w-full md:w-auto font-mono">
+              <div class="bg-stone-100 border-4 border-green-950 p-4 flex justify-between items-center gap-8 font-black uppercase text-xl brutal-shadow">
+                <span>20,00 EUR =</span>
+                <span class="text-red-600">10 Bulloni + 1 Extra</span>
+              </div>
+              <div class="bg-yellow-400 border-4 border-green-950 p-4 flex justify-between items-center gap-8 font-black uppercase text-2xl brutal-shadow">
+                <span>50,00 EUR =</span>
+                <span class="text-green-950">25 Bulloni + 4 Extra</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12">L'Equipaggiamento</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <!-- Prodotto 1: Overshirt -->
+          <div class="border-4 border-green-950 flex flex-col bg-white brutal-shadow relative group">
+            <div class="absolute -top-6 -right-6 bg-red-600 text-stone-100 font-black text-3xl p-4 border-4 border-green-950 z-10 shadow-[4px_4px_0px_#052e16] rotate-6 group-hover:rotate-0 transition-transform font-mono">
+              €85.00
+            </div>
+            <div class="h-80 bg-stone-200 border-b-4 border-green-950 overflow-hidden relative">
+              <img src="/images/wear-flannel.jpg" alt="Overshirt flanella" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2 left-2 bg-green-950 text-stone-100 text-xs font-mono font-bold px-2 py-1 uppercase">LINEA BOTTEGA</span>
+            </div>
+            <div class="p-8 flex flex-col flex-grow bg-stone-100">
+              <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-4">OVERSHIRT FLANELLA</h3>
+              <p class="text-sm md:text-base text-green-900 font-bold mb-8 flex-grow uppercase leading-relaxed font-mono">
+                Taglio da lavoro pesante, zip frontale e tasche rinforzate. Tiene caldo sul colle senza sfilacciarsi.
+              </p>
+              <button class="add-to-cart w-full bg-green-950 text-yellow-400 border-4 border-green-950 font-black text-xl uppercase py-5 hover:bg-emerald-500 hover:text-green-950 brutal-shadow flex items-center justify-center gap-3 transition-colors">
+                Metti nel sacco →
+              </button>
+            </div>
+          </div>
+
+          <!-- Prodotto 2: Casco FOX MIPS -->
+          <div class="border-4 border-green-950 flex flex-col bg-white brutal-shadow relative group">
+            <div class="absolute -top-6 -right-6 bg-red-600 text-stone-100 font-black text-3xl p-4 border-4 border-green-950 z-10 shadow-[4px_4px_0px_#052e16] rotate-6 group-hover:rotate-0 transition-transform font-mono">
+              €140.00
+            </div>
+            <div class="h-80 bg-stone-200 border-b-4 border-green-950 overflow-hidden relative">
+              <img src="/images/helmet-fox.jpg" alt="Casco FOX MIPS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2 left-2 bg-green-950 text-stone-100 text-xs font-mono font-bold px-2 py-1 uppercase">PROTEZIONE CRUDA</span>
+            </div>
+            <div class="p-8 flex flex-col flex-grow bg-stone-100">
+              <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-4">CASCO FOX MIPS</h3>
+              <p class="text-sm md:text-base text-green-900 font-bold mb-8 flex-grow uppercase leading-relaxed font-mono">
+                Protezione certificata MIPS. Se picchi la testa sulle arenarie del Beigua capisci perché non si risparmia qui.
+              </p>
+              <button class="add-to-cart w-full bg-green-950 text-yellow-400 border-4 border-green-950 font-black text-xl uppercase py-5 hover:bg-emerald-500 hover:text-green-950 brutal-shadow flex items-center justify-center gap-3 transition-colors">
+                Metti nel sacco →
+              </button>
+            </div>
+          </div>
+
+          <!-- Prodotto 3: Berretto FOX -->
+          <div class="border-4 border-green-950 flex flex-col bg-white brutal-shadow relative group">
+            <div class="absolute -top-6 -right-6 bg-red-600 text-stone-100 font-black text-3xl p-4 border-4 border-green-950 z-10 shadow-[4px_4px_0px_#052e16] rotate-6 group-hover:rotate-0 transition-transform font-mono">
+              €28.00
+            </div>
+            <div class="h-80 bg-stone-200 border-b-4 border-green-950 overflow-hidden relative">
+              <img src="/images/wear-beanie.jpg" alt="Beanie FOX" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute bottom-2 left-2 bg-green-950 text-stone-100 text-xs font-mono font-bold px-2 py-1 uppercase">MATRICOLA SSL</span>
+            </div>
+            <div class="p-8 flex flex-col flex-grow bg-stone-100">
+              <h3 class="text-2xl md:text-3xl font-black uppercase leading-none mb-4">BERRETTO IN LANA FOX</h3>
+              <p class="text-sm md:text-base text-green-900 font-bold mb-8 flex-grow uppercase leading-relaxed font-mono">
+                Maglia pesante a coste. Per quando molli la bici, si spegne il sole e il termometro va a zero.
+              </p>
+              <button class="add-to-cart w-full bg-green-950 text-yellow-400 border-4 border-green-950 font-black text-xl uppercase py-5 hover:bg-emerald-500 hover:text-green-950 brutal-shadow flex items-center justify-center gap-3 transition-colors">
+                Metti nel sacco →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE SENTIERI BEIGUA -->
+    <section id="sentieri" class="p-4 md:p-16 border-b-4 border-green-950 bg-stone-300">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 border-4 border-green-950 bg-white brutal-shadow overflow-hidden">
+          <img src="/images/sentieri-beigua.jpg" alt="Singletrack Sassello Beigua" class="w-full h-auto aspect-[16/10] object-cover" />
+        </div>
+        <div class="md:col-span-5 space-y-6">
+          <span class="bg-red-600 text-white font-mono font-bold text-xs uppercase px-3 py-1 border-2 border-green-950">
+            BANCO DI PROVA NATURALE
+          </span>
+          <h2 class="text-5xl md:text-7xl font-black uppercase leading-none text-green-950">
+            Se non regge qui, non entra in bottega.
+          </h2>
+          <p class="text-lg font-bold text-green-900 uppercase font-mono leading-relaxed">
+            Le arenarie e i pini del Beigua massacrano le plastiche commerciali. I ricambi, le gomme e i montaggi che trovi da noi sono collaudati direttamente nel bosco.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- L'OFFICINA E IL NOLEGGIO -->
+    <section id="officina" class="p-4 md:p-16 bg-stone-100 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter mb-12 text-green-950 border-b-8 border-red-600 pb-4 inline-block drop-shadow-sm">
+          Il Tempio
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+          
+          <!-- NOLEGGIO E REGOLE -->
+          <div class="border-4 border-green-950 p-8 md:p-12 bg-white brutal-shadow">
+            <h3 class="text-4xl md:text-5xl font-black uppercase mb-8">
+              💀 Noleggio & Setta
+            </h3>
+            <p class="text-2xl font-bold uppercase text-green-900 mb-8 leading-relaxed font-mono">
+              Non affittiamo bici per la passeggiata in centro. Se prenoti, è per faticare. Attiva la <span class="bg-yellow-400 px-2 text-green-950 border-2 border-green-950 font-bold">Tessera dell'Officina</span>. 
+            </p>
+            <ul class="space-y-6 text-xl font-bold uppercase text-green-800 font-mono">
+              <li class="flex items-center gap-4 border-b-4 border-stone-200 pb-4">
+                ⚠️ Accesso diretto al <strong class="text-green-950">Programma Volta d'Onore</strong>
+              </li>
+              <li class="flex items-center gap-4 border-b-4 border-stone-200 pb-4">
+                ⚠️ Sblocca le <strong class="text-green-950">Sfide del Ciclista</strong>
+              </li>
+              <li class="flex items-center gap-4">
+                ⚠️ Manutenzione spietata al decimo di millimetro
+              </li>
+            </ul>
+          </div>
+
+          <!-- ESTRAZIONE DEL TUBO ZINCATO -->
+          <div class="border-4 border-green-950 p-8 md:p-12 bg-red-600 text-stone-100 flex flex-col justify-center items-center text-center brutal-shadow">
+            <h3 class="text-5xl md:text-7xl font-black uppercase mb-6 leading-none">
+              Estrazione del <br/> Tubo Zincato
+            </h3>
+            <p class="text-2xl font-bold uppercase mb-12 max-w-md font-mono">
+              Solo chi accumula abbastanza Bulloni partecipa. Il tempo scorre.
+            </p>
+            
+            <div class="bg-stone-100 text-green-950 border-4 border-green-950 p-6 w-full max-w-lg mb-8 brutal-shadow">
+              <div class="flex items-center justify-center gap-4 mb-2 text-red-600">
+                <span class="text-xl font-black uppercase font-mono">⏱ Tempo Rimasto</span>
+              </div>
+              <div id="countdown-display" class="text-5xl md:text-6xl font-black tabular-nums tracking-tighter font-mono">
+                3G 00:00:00
+              </div>
+            </div>
+
+            <a 
+              href="https://wa.me/393400000000?text=Voglio%20entrare%20nell%27Estrazione%20del%20Tubo%20Zincato"
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-yellow-400 text-green-950 font-black text-2xl uppercase py-4 px-8 border-4 border-green-950 brutal-shadow hover:bg-stone-100 hover:text-green-950 transition-colors"
+            >
+              Entra O Resta a Piedi
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-green-950 border-t-8 border-yellow-400 p-8 md:p-16 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-8">
+      <div>
+        <h2 class="text-4xl font-black uppercase tracking-tighter text-stone-100">
+          OUTSIDE<span class="inline-block -scale-x-100 text-emerald-500">R</span> <span class="text-stone-500">///</span> 17046
+        </h2>
+        <p class="text-lg font-bold uppercase text-stone-400 mt-2 font-mono">
+          Niente scuse. Se la bici scricchiola, è colpa tua.
+        </p>
+      </div>
+      
+      <div class="flex flex-col gap-2 font-black text-lg text-stone-100 uppercase text-right font-mono">
+        <a href="https://instagram.com/sisgasa" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 hover:-translate-x-2 transition-transform">Instagram (@sisgasa)</a>
+        <a href="#" class="hover:text-emerald-500 hover:-translate-x-2 transition-transform">Regole di Non-Reso</a>
+        <a href="https://maps.google.com/?q=Sassello" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 hover:-translate-x-2 transition-transform">La Bottega (Sassello SV)</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Script Client per Contatore e Carrello -->
+  <script is:inline>
+    // Countdown Timer 3 giorni
+    let timeLeft = 259200;
+    const countdownEl = document.getElementById('countdown-display');
+    setInterval(() => {
+      if (timeLeft > 0) timeLeft--;
+      const d = Math.floor(timeLeft / 86400);
+      const h = Math.floor((timeLeft % 86400) / 3600);
+      const m = Math.floor((timeLeft % 3600) / 60);
+      const s = timeLeft % 60;
+      if (countdownEl) {
+        countdownEl.textContent = `${d}G ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }
+    }, 1000);
+
+    // Carrello interattivo e notifica toast
+    let count = 0;
+    const countEl = document.getElementById('cart-count');
+    const toastEl = document.getElementById('cart-toast');
+    document.querySelectorAll('.add-to-cart').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        count++;
+        if (countEl) countEl.textContent = count;
+        if (toastEl) {
+          toastEl.classList.remove('hidden');
+          setTimeout(() => toastEl.classList.add('hidden'), 2000);
+        }
+      });
+    });
+  </script>
+</BaseLayout>
