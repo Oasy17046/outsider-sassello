@@ -1,493 +1,1364 @@
 ﻿---
-// src/pages/index.astro - OUTSIDEЯ /// Bottega & Wallet Personale
+// src/pages/index.astro - Outsider Sassello (Outsider SSL /// 17046)
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="OUTSIDEЯ /// Bottega, Officina & Wallet">
+<BaseLayout title="Outsider Sassello — Officina, Abbigliamento, Bottega e Flotta Hepha MY26">
   <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#052e16" />
+  <meta name="theme-color" content="#0e0e0d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Outsider" />
+  <meta name="apple-mobile-web-app-title" content="Outsider SSL" />
 
-  <div class="min-h-screen bg-stone-100 text-green-950 font-sans overflow-x-hidden pb-24 md:pb-12 selection:bg-emerald-500 selection:text-white">
-    
-    <style is:global>
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-      .animate-marquee {
-        display: inline-block;
-        white-space: nowrap;
-        animation: marquee 16s linear infinite;
-      }
-      @keyframes bike-routine {
-        0% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(1); }
-        18% { transform: translateX(28vw) translateY(0) rotate(-32deg) scaleX(1); }
-        30% { transform: translateX(48vw) translateY(0) rotate(0deg) scaleX(1); }
-        37% { transform: translateX(62vw) translateY(-45px) rotate(-90deg) scaleX(1); }
-        40% { transform: translateX(70vw) translateY(-70px) rotate(-180deg) scaleX(1); }
-        45% { transform: translateX(85vw) translateY(0) rotate(-360deg) scaleX(1); }
-        48% { transform: translateX(112vw) translateY(0) rotate(0deg) scaleX(1); }
-        49% { transform: translateX(112vw) translateY(0) rotate(0deg) scaleX(-1); }
-        53% { transform: translateX(100vw) translateY(0) rotate(0deg) scaleX(-1); }
-        75% { transform: translateX(45vw) translateY(0) rotate(-28deg) scaleX(-1); }
-        98% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(-1); }
-        100% { transform: translateX(-12vw) translateY(0) rotate(0deg) scaleX(1); }
-      }
-      .stunt-bike {
-        position: absolute;
-        bottom: 6px;
-        left: 0;
-        animation: bike-routine 12s linear infinite;
-        z-index: 25;
-        pointer-events: none;
-        transform-origin: 16px 24px;
-      }
-      .brutal-shadow {
-        box-shadow: 6px 6px 0px #052e16;
-        transition: all 0.1s ease-in-out;
-      }
-      .brutal-shadow:hover {
-        box-shadow: 2px 2px 0px #052e16;
-        transform: translate(4px, 4px);
-      }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- BANNER PWA INSTALL -->
-    <div id="pwa-install-bar" class="bg-yellow-400 border-b-4 border-green-950 p-3 font-mono text-xs font-bold text-green-950 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2">
-          <span class="text-lg">📲</span>
-          <span id="pwa-install-text">INSTALLA OUTSIDER SUL TELEFONO PER GESTIRE I TUOI BULLONI</span>
+  <div class="min-h-screen bg-[#0e0e0d] text-[#ebe6dd] font-sans overflow-x-hidden pb-20 md:pb-0 selection:bg-[#c4532d] selection:text-[#ebe6dd]">
+
+    <!-- BANNER INSTALLAZIONE PWA -->
+    <div id="pwa-install-bar" class="bg-[#161514] border-b border-white/[0.10] px-4 sm:px-6 py-2.5 text-xs text-[#9e9990]">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-[#c4532d] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect x="7" y="2" width="10" height="20" rx="1" />
+            <line x1="12" y1="18" x2="12.01" y2="18" />
+          </svg>
+          <span>Salva <strong class="text-[#ebe6dd] font-medium">Outsider SSL /// 17046</strong> sul telefono: credito Card in Euro, cavalletto officina e pacchetti e-bike sempre pronti anche senza rete nel bosco.</span>
         </div>
-        <button id="pwa-install-trigger" class="bg-green-950 text-white px-3 py-1 uppercase text-[11px] border-2 border-green-950 brutal-shadow shrink-0 hover:bg-emerald-600">
-          Aggiungi a Home
+        <button
+          id="pwa-install-trigger"
+          class="h-8 px-3 bg-[#1f1e1c] hover:bg-[#c4532d] text-[#ebe6dd] text-xs font-mono-tech border border-white/[0.16] shrink-0 transition-colors duration-150"
+        >
+          Installa app
         </button>
       </div>
     </div>
 
     <!-- MODALE GUIDA IPHONE -->
-    <div id="ios-guide-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-stone-100 border-4 border-green-950 p-6 max-w-sm w-full brutal-shadow font-mono space-y-4 text-green-950">
-        <div class="flex justify-between items-center border-b-2 border-green-950 pb-2">
-          <strong class="text-sm uppercase">Come installare su iPhone:</strong>
-          <button id="close-ios-modal" class="text-xl font-black">✕</button>
+    <div id="ios-guide-modal" class="hidden fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4">
+      <div class="bg-[#161514] border border-white/[0.18] p-6 max-w-sm w-full space-y-5 text-[#ebe6dd]">
+        <div class="flex justify-between items-center border-b border-white/[0.10] pb-3">
+          <h3 class="text-sm font-mono-tech font-medium text-[#ebe6dd]">Installazione su iPhone</h3>
+          <button id="close-ios-modal" class="text-[#9e9990] hover:text-[#ebe6dd] p-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <ol class="list-decimal list-inside text-xs space-y-2">
-          <li>Premi il tasto <strong>Condividi</strong> in basso su Safari (icona quadrato con freccia in alto).</li>
-          <li>Scorri l'elenco e tocca <strong>"Aggiungi alla schermata Home"</strong>.</li>
-          <li>Conferma in alto a destra: avrai la bottega accessibile senza barre del browser.</li>
+        <ol class="list-decimal list-inside text-sm text-[#9e9990] space-y-2.5 leading-relaxed">
+          <li>Premi <strong class="text-[#ebe6dd] font-medium">Condividi</strong> in basso su Safari</li>
+          <li>Scorri e tocca <strong class="text-[#ebe6dd] font-medium">Aggiungi alla schermata Home</strong></li>
+          <li>Conferma in alto a destra per avere la tua Matricola sempre pronta</li>
         </ol>
-        <button id="dismiss-ios-modal" class="w-full bg-green-950 text-yellow-400 py-2 uppercase font-black text-xs border-2 border-green-950">
-          Ho Capito
+        <button id="dismiss-ios-modal" class="w-full h-10 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] font-medium text-sm transition-colors duration-150">
+          Ho capito
         </button>
       </div>
     </div>
 
-    <!-- MODALE CREAZIONE MATRICOLA -->
-    <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-stone-100 border-4 border-green-950 p-6 max-w-md w-full brutal-shadow font-mono space-y-4 text-green-950">
-        <div class="border-b-4 border-green-950 pb-2">
-          <span class="text-[10px] text-red-600 font-bold uppercase">Registrazione Matricola</span>
-          <h3 class="text-2xl font-black uppercase">Attiva il Tuo Profilo</h3>
+    <!-- MODALE REGISTRAZIONE / ACCESSO / RIPRISTINO (LIVELLO 01: MATRICOLA DIGITALE) -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-[#161514] border border-white/[0.18] p-6 max-w-md w-full space-y-5 text-[#ebe6dd]">
+        <div class="flex justify-between items-start border-b border-white/[0.10] pb-4">
+          <div>
+            <span class="block text-xs font-mono-tech text-[#c4532d] mb-1">Livello 01 • Matricola Digitale</span>
+            <h3 id="modal-profile-title" class="font-display-raw text-2xl tracking-wide text-[#ebe6dd]">Attiva Matricola Digitale</h3>
+          </div>
+          <button id="close-profile-modal" class="text-[#9e9990] hover:text-[#ebe6dd] p-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <p class="text-xs text-green-900 leading-relaxed font-bold">
-          Associa i tuoi Bulloni alla tua matricola personale. Nessuna password da ricordare: serve solo il tuo numero per il riconoscimento al bancone.
+
+        <p class="text-sm text-[#9e9990] leading-relaxed">
+          Genera gratis il tuo codice <strong class="text-[#ebe6dd] font-medium">SSL-XXXX</strong> per prenotare cavalletto e flotta e-bike. Al primo acquisto o lavoro valido da almeno <strong class="text-[#ebe6dd] font-medium">30,00 €</strong> ritiri gratis la <strong class="text-[#ebe6dd] font-medium">Card Legno (5% cashback)</strong> oppure aggiungi <strong class="text-[#ebe6dd] font-medium">20,00 €</strong> per la <strong class="text-[#ebe6dd] font-medium">Card Metallo 2027 + OASY ASD (10% cashback)</strong>.
         </p>
-        
-        <form id="profile-form" class="space-y-3 text-xs">
+
+        <form id="profile-form" class="space-y-4">
           <div>
-            <label class="block font-bold uppercase mb-1">Nome e Cognome:</label>
-            <input type="text" id="input-name" required placeholder="es. Marco Rossi" class="w-full p-2.5 bg-white border-2 border-green-950 font-mono text-sm focus:bg-yellow-100 outline-none" />
+            <label for="input-name" class="block text-xs font-mono-tech text-[#9e9990] mb-1.5">Nome e cognome</label>
+            <input
+              type="text"
+              id="input-name"
+              required
+              placeholder="Marco Rossi"
+              class="w-full h-11 px-3.5 bg-[#0e0e0d] border border-white/[0.16] text-sm text-[#ebe6dd] placeholder:text-[#69655e] focus:border-[#c4532d] focus:outline-none"
+            />
           </div>
           <div>
-            <label class="block font-bold uppercase mb-1">Numero WhatsApp (per avvisi &amp; banco):</label>
-            <input type="tel" id="input-phone" required placeholder="es. 347 1234567" class="w-full p-2.5 bg-white border-2 border-green-950 font-mono text-sm focus:bg-yellow-100 outline-none" />
+            <label for="input-phone" class="block text-xs font-mono-tech text-[#9e9990] mb-1.5">Numero WhatsApp</label>
+            <input
+              type="tel"
+              id="input-phone"
+              required
+              placeholder="347 1234567"
+              class="w-full h-11 px-3.5 bg-[#0e0e0d] border border-white/[0.16] font-mono-tech text-sm text-[#ebe6dd] placeholder:text-[#69655e] focus:border-[#c4532d] focus:outline-none"
+            />
           </div>
-          <button type="submit" class="w-full bg-emerald-500 text-green-950 py-3 uppercase font-black text-sm border-2 border-green-950 brutal-shadow hover:bg-yellow-400">
-            Genera Tessera &amp; Incassa 5 Bulloni Benvenuto →
+          <button
+            type="submit"
+            id="profile-submit-btn"
+            class="w-full h-11 bg-[#c4532d] hover:bg-[#9e3f1f] text-[#ebe6dd] font-medium text-sm transition-colors duration-150"
+          >
+            Attiva Matricola Digitale (Gratuita)
           </button>
         </form>
+
+        <div class="border-t border-white/[0.10] pt-4 space-y-3">
+          <span class="block text-xs text-[#9e9990]">Hai già una matricola o una Card fisica? Ripristina o salva il codice:</span>
+          <div class="grid grid-cols-2 gap-3">
+            <button
+              id="import-token-btn"
+              type="button"
+              class="h-10 bg-[#1f1e1c] hover:bg-[#2b2926] border border-white/[0.14] text-xs font-mono-tech text-[#ebe6dd] transition-colors duration-150"
+            >
+              Accedi con codice
+            </button>
+            <button
+              id="export-token-btn"
+              type="button"
+              class="hidden h-10 bg-[#1f1e1c] hover:bg-[#2b2926] border border-white/[0.14] text-xs font-mono-tech text-[#ebe6dd] transition-colors duration-150"
+            >
+              Copia backup
+            </button>
+          </div>
+          <button
+            id="logout-profile-btn"
+            type="button"
+            class="hidden w-full text-center text-xs font-mono-tech text-[#c4532d] hover:underline pt-1"
+          >
+            Esci dall'account su questo dispositivo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALE BANCONE OPERATORE (PIN PROTETTO) -->
+    <div id="admin-modal" class="hidden fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4">
+      <div class="bg-[#161514] text-[#ebe6dd] border border-white/[0.18] p-6 max-w-sm w-full space-y-5">
+        <div class="flex justify-between items-center border-b border-white/[0.10] pb-3">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#c4532d]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="1" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <h3 class="text-sm font-mono-tech font-medium">Terminale bancone</h3>
+          </div>
+          <button id="close-admin-modal" class="text-[#9e9990] hover:text-[#ebe6dd] p-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div id="admin-pin-step" class="space-y-4">
+          <p class="text-xs text-[#9e9990] leading-relaxed">
+            Inserisci il PIN dell'officina per assegnare Card Legno / Card Metallo 2027, accreditare il cashback automatico o scalare credito in Euro al banco.
+          </p>
+          <input
+            type="password"
+            id="admin-pin-input"
+            maxlength="4"
+            placeholder="••••"
+            class="w-full h-12 bg-[#0e0e0d] border border-white/[0.18] text-center text-xl font-mono-tech tracking-[0.5em] text-[#ebe6dd] focus:border-[#c4532d] focus:outline-none"
+          />
+          <button
+            id="admin-pin-submit"
+            class="w-full h-10 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] font-medium text-xs transition-colors duration-150"
+          >
+            Sblocca terminale
+          </button>
+        </div>
+
+        <div id="admin-actions-step" class="hidden space-y-4 text-xs">
+          <div class="space-y-2">
+            <span class="block text-xs font-mono-tech text-[#9e9990]">1. Supporto e aliquota Cashback attiva</span>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                data-set-tier="digitale"
+                class="set-tier-btn h-9 bg-[#0e0e0d] hover:border-[#c4532d] border border-white/[0.16] font-mono-tech text-xs text-[#ebe6dd] transition-colors duration-150"
+              >
+                Digitale (0%)
+              </button>
+              <button
+                type="button"
+                data-set-tier="legno"
+                class="set-tier-btn h-9 bg-[#0e0e0d] hover:border-[#c4532d] border border-white/[0.16] font-mono-tech text-xs text-[#4d7c5b] transition-colors duration-150"
+              >
+                Card Legno (5%)
+              </button>
+              <button
+                type="button"
+                data-set-tier="metallo"
+                class="set-tier-btn h-9 bg-[#0e0e0d] hover:border-[#c4532d] border border-white/[0.16] font-mono-tech text-xs text-[#c4532d] transition-colors duration-150"
+              >
+                Metallo 2027 (10%)
+              </button>
+              <button
+                type="button"
+                data-set-tier="metallo_base"
+                class="set-tier-btn h-9 bg-[#0e0e0d] hover:border-[#c4532d] border border-white/[0.16] font-mono-tech text-xs text-[#9e9990] transition-colors duration-150"
+              >
+                Non rinnovata (5%)
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-3 border-t border-white/[0.10]">
+            <label for="admin-receipt-amount" class="block text-xs font-mono-tech text-[#9e9990]">
+              2. Scontrino valido (€) → accredita Cashback automatico
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="number"
+                step="0.01"
+                min="0"
+                id="admin-receipt-amount"
+                placeholder="Es. 140.00"
+                class="w-1/2 h-10 px-3 bg-[#0e0e0d] border border-white/[0.16] font-mono-tech text-sm text-[#ebe6dd] focus:border-[#c4532d] focus:outline-none"
+              />
+              <button
+                id="apply-auto-cashback"
+                type="button"
+                class="w-1/2 h-10 bg-[#4d7c5b] hover:bg-[#3f674b] text-[#ebe6dd] font-medium text-xs transition-colors duration-150"
+              >
+                Accredita %
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-3 border-t border-white/[0.10]">
+            <label for="manual-euro-delta" class="block text-xs font-mono-tech text-[#9e9990]">
+              3. Scala credito (max 50% conto) o rettifica manuale (€)
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="number"
+                step="0.01"
+                id="manual-euro-delta"
+                placeholder="-10.00 o +5.00"
+                class="w-1/2 h-10 px-3 bg-[#0e0e0d] border border-white/[0.16] font-mono-tech text-sm text-[#ebe6dd] focus:border-[#c4532d] focus:outline-none"
+              />
+              <button
+                id="apply-manual-delta"
+                type="button"
+                class="w-1/2 h-10 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] font-medium text-xs transition-colors duration-150"
+              >
+                Applica €
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- NOTIFICA TOAST -->
-    <div id="app-toast" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-emerald-500 text-green-950 border-4 border-green-950 px-6 py-3 font-black uppercase font-mono tracking-widest brutal-shadow text-center">
-      Operazione Conclusa.
+    <div
+      id="app-toast"
+      class="hidden fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#161514] text-[#ebe6dd] border border-[#c4532d] px-5 py-3 font-mono-tech text-xs shadow-2xl text-center max-w-[90vw]"
+    >
+      Operazione conclusa
     </div>
 
-    <!-- TICKER -->
-    <div class="bg-red-600 text-stone-100 border-b-4 border-green-950 overflow-hidden py-1.5 font-black uppercase text-sm sm:text-base flex items-center z-40 relative font-mono">
-      <div class="animate-marquee">
-        <span class="mx-6">10 BULLONI = 20.00 EUR (+1 EXTRA)</span><span class="mx-6 text-green-950">///</span>
-        <span class="mx-6">25 BULLONI = 50.00 EUR (+4 EXTRA)</span><span class="mx-6 text-green-950">///</span>
-        <span class="mx-6">TESSERA NOMINATIVA DI BOTTEGA</span><span class="mx-6 text-green-950">///</span>
-        <span class="mx-6">MEETING POINT UFFICIALE OASY ASD</span><span class="mx-6 text-green-950">///</span>
+    <!-- BLOCCO 0: BARRA CONTESTO & HEADER ARCHITETTONICO -->
+    <div class="bg-[#0e0e0d] border-b border-white/[0.10] px-4 sm:px-6 py-2 text-xs font-mono-tech text-[#9e9990]">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+        <span>Piazza della Concezione 11 e 12 • 17046 Sassello (SV)</span>
+        <div class="flex items-center gap-4 text-[#ebe6dd]">
+          <span>Mar–Dom 09:00–12:30 / 15:30–19:00</span>
+          <span class="text-[#69655e]">•</span>
+          <span class="text-[#c4532d]">Lun chiuso</span>
+        </div>
+        <span class="hidden lg:inline text-[#ebe6dd]">Outsider SSL /// 17046</span>
       </div>
     </div>
 
-    <!-- HEADER / DASHBOARD APP -->
-    <header class="border-b-4 border-green-950 bg-stone-100 p-3 sm:p-5 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="border-2 border-green-950 bg-white p-1">
-          <img src="/images/Logo.jpg" alt="Logo Outsider" class="w-8 h-8 object-contain" onerror="this.src='/images/Logo.png'" />
-        </div>
-        <div>
-          <h1 class="text-xl sm:text-3xl font-black uppercase tracking-tighter leading-none">
-            OUTSIDE<span class="inline-block -scale-x-100 text-red-600">R</span> <span class="text-stone-400 text-xs sm:text-sm">SASSELLO /// 17046</span>
-          </h1>
-          <div class="flex items-center gap-2 pt-0.5">
-            <span id="user-badge" class="text-[10px] font-mono text-emerald-800 font-bold uppercase">● Ospite non collegato</span>
-            <button id="edit-profile-btn" class="text-[9px] font-mono underline uppercase text-stone-500 hover:text-green-950">[Modifica Profilo]</button>
+    <header class="sticky top-0 z-40 border-b border-white/[0.11] bg-[#0e0e0d]/95 px-4 sm:px-6 h-20 flex items-center">
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center gap-6">
+        <a href="#" class="flex items-center gap-4 shrink-0">
+          <img
+            src="/images/logo-outsider.svg"
+            onerror="if(!this.dataset.f){this.dataset.f='1';this.src='/image/logo-outsider.svg';}else{this.style.display='none';}"
+            alt="Outsider Sassello — Outsider SSL /// 17046"
+            class="h-10 sm:h-11 w-auto object-contain block invert"
+          />
+          <div class="flex flex-col border-l border-white/[0.12] pl-3 sm:pl-4">
+            <span class="text-sm font-medium text-[#ebe6dd]">Outsider Sassello</span>
+            <span class="text-xs font-mono-tech text-[#c4532d]">Outsider SSL /// 17046</span>
           </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-sm text-[#9e9990]">
+          <a href="#flotta" class="hover:text-[#ebe6dd] transition-colors duration-150">Flotta Hepha</a>
+          <a href="#bottega" class="hover:text-[#ebe6dd] transition-colors duration-150">Bottega</a>
+          <a href="#officina" class="hover:text-[#ebe6dd] transition-colors duration-150">Officina</a>
+          <a href="#tessera" class="hover:text-[#ebe6dd] transition-colors duration-150">Card & Cashback</a>
+          <a href="#oasy" class="hover:text-[#ebe6dd] transition-colors duration-150">OASY ASD</a>
+        </nav>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <a
+            id="header-wallet-pill"
+            href="#tessera"
+            class="hidden h-10 px-3.5 border border-white/[0.18] bg-[#161514] hover:border-[#c4532d] text-[#ebe6dd] font-mono-tech text-xs transition-colors duration-150 inline-flex items-center gap-2"
+          >
+            <span class="w-2 h-2 bg-[#4d7c5b]"></span>
+            <span><strong id="header-euro-count" class="font-semibold">0,00 €</strong> <span class="hidden sm:inline text-[#9e9990]">Card</span></span>
+          </a>
+
+          <button
+            id="edit-profile-btn"
+            class="h-10 px-3.5 border border-white/[0.14] bg-[#161514] hover:bg-[#1f1e1c] text-[#ebe6dd] text-xs font-mono-tech transition-colors duration-150 inline-flex items-center gap-2"
+          >
+            <svg class="w-4 h-4 text-[#9e9990]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            <span id="header-auth-label">Area soci</span>
+          </button>
+
+          <a
+            href="#flotta"
+            class="hidden sm:inline-flex items-center justify-center h-10 px-4 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] text-xs font-medium transition-colors duration-150"
+          >
+            Pacchetti E-Bike
+          </a>
         </div>
       </div>
-
-      <!-- Live Bulloni Balance Badge -->
-      <a href="#wallet" class="flex items-center gap-2 border-2 sm:border-4 border-green-950 bg-yellow-400 px-3 py-1.5 font-black uppercase brutal-shadow text-green-950 font-mono text-xs sm:text-sm">
-        <span>🔩</span>
-        <span><strong id="header-bulloni-count">0</strong> BULLONI</span>
-      </a>
     </header>
 
-    <!-- HERO SECTION CON BICI STUNT -->
-    <section class="relative px-4 py-12 md:py-20 border-b-4 border-green-950 overflow-hidden bg-stone-200">
-      <div class="stunt-bike">
-        <svg viewBox="0 0 32 32" width="70" height="70" style="shape-rendering: crispEdges;">
-          <g fill="#052e16">
-            <rect x="2" y="20" width="8" height="8"></rect>
-            <rect x="4" y="22" width="4" height="4" fill="#f5f5f4"></rect>
-            <rect x="5" y="23" width="2" height="2" fill="#052e16"></rect>
-            <rect x="22" y="20" width="8" height="8"></rect>
-            <rect x="24" y="22" width="4" height="4" fill="#f5f5f4"></rect>
-            <rect x="25" y="23" width="2" height="2" fill="#052e16"></rect>
-            <rect x="6" y="23" width="18" height="2"></rect>
-            <rect x="10" y="14" width="2" height="11"></rect>
-            <rect x="24" y="14" width="2" height="11"></rect>
-            <rect x="10" y="14" width="14" height="2"></rect>
-            <rect x="7" y="12" width="6" height="2"></rect>
-            <rect x="23" y="12" width="6" height="2"></rect>
-            <rect x="27" y="10" width="2" height="4"></rect>
-          </g>
-        </svg>
+    <!-- BLOCCO 1: HERO SCENOGRAFICO A PIENO SCHERMO (PIETRA, MATTONI E ACCIAIO) -->
+    <section class="relative border-b border-white/[0.12] bg-[#0e0e0d] overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          src="/images/bottega-interni.jpg"
+          alt="Interno Outsider Sassello: pareti in pietra, volte in mattoni a vista, tubi zincati e biciclette"
+          class="w-full h-full object-cover object-center opacity-55"
+        />
+        <div
+          class="absolute inset-0"
+          style="background: linear-gradient(90deg, #0e0e0d 0%, rgba(14,14,13,0.92) 46%, rgba(14,14,13,0.42) 100%), linear-gradient(180deg, rgba(14,14,13,0.35) 0%, rgba(14,14,13,0.96) 100%);"
+        ></div>
       </div>
 
-      <div class="absolute bottom-0 left-0 w-full border-b-4 border-dashed border-green-950 pointer-events-none z-10"></div>
-
-      <div class="max-w-7xl mx-auto relative z-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-l-8 border-red-600 pl-4 sm:pl-8">
-        <div class="md:col-span-7 space-y-4">
-          <div class="inline-block bg-yellow-400 text-green-950 font-black uppercase px-3 py-1 text-xs sm:text-sm font-mono border-2 border-green-950 shadow-[3px_3px_0px_#052e16]">
-            ⚡ Bottega &bull; Officina Meccanica &bull; Sassello Centro
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-14 lg:pt-24 lg:pb-16">
+        <div class="max-w-3xl space-y-6">
+          <div class="inline-flex items-center gap-3 border border-white/[0.16] bg-[#0e0e0d]/85 px-3.5 py-1.5 text-xs font-mono-tech text-[#ebe6dd]">
+            <span class="w-2 h-2 bg-[#c4532d]"></span>
+            <span>OUTSIDER SSL /// 17046 • SASSELLO • 385 M S.L.M.</span>
           </div>
-          <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
-            I tuoi crediti. La tua tessera.
-          </h2>
-          <p class="font-mono text-xs sm:text-sm text-green-900 leading-relaxed font-bold">
-            Mostra la tua tessera virtuale al bancone tra muri in pietra, volte in mattoni e tubi zincati. Scala i Bulloni per manutenzioni, ricambi e abbigliamento tecnico.
+
+          <h1 class="font-display-raw text-5xl sm:text-6xl lg:text-7xl leading-[0.98] tracking-tight text-[#ebe6dd]">
+            Pietra, mattoni, tubi zincati e bici pronte per il Beigua
+          </h1>
+
+          <p class="text-base sm:text-lg text-[#9e9990] leading-relaxed max-w-xl">
+            Officina meccanica sul cavalletto, abbigliamento tecnico e streetwear selezionato, campo base per uscire sui crinali. Prezzi chiari in Euro, zero fuffa da catalogo: solo ferro, tessuto e sentieri veri.
           </p>
-          <div class="flex flex-wrap gap-3 pt-2 font-mono text-xs font-bold">
-            <a href="#wallet" class="bg-emerald-500 text-green-950 px-5 py-3 uppercase border-2 sm:border-4 border-green-950 brutal-shadow">
-              Vedi La Mia Tessera 🔩
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href="#flotta"
+              class="h-12 px-6 bg-[#c4532d] hover:bg-[#9e3f1f] text-[#ebe6dd] text-sm font-medium inline-flex items-center justify-center transition-colors duration-150"
+            >
+              Pacchetti E-Bike & Guide
             </a>
-            <button id="hero-setup-profile" class="bg-white text-green-950 px-5 py-3 uppercase border-2 sm:border-4 border-green-950 brutal-shadow">
-              Configura Matricola 🪪
-            </button>
+            <a
+              href="#tessera"
+              class="h-12 px-6 bg-[#161514]/90 hover:bg-[#1f1e1c] text-[#ebe6dd] text-sm font-medium border border-white/[0.18] inline-flex items-center justify-center transition-colors duration-150"
+            >
+              Card Legno & Metallo (5% / 10%)
+            </a>
           </div>
         </div>
 
-        <div class="md:col-span-5 relative">
-          <div class="absolute inset-0 bg-red-600 border-4 border-green-950 brutal-shadow transform rotate-2 translate-x-2 translate-y-2"></div>
-          <img src="/images/bottega-interni.jpg" alt="Bottega Sassello" class="relative z-10 w-full h-auto border-4 border-green-950 aspect-[4/3] object-cover" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SEZIONE WALLET PERSONALE -->
-    <section id="wallet" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-100">
-      <div class="max-w-7xl mx-auto space-y-8">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b-4 border-green-950 pb-4">
-          <div>
-            <span class="text-xs font-mono font-bold text-amber-600 uppercase">Valuta &amp; Matricola Personale</span>
-            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">Il Tuo Wallet Personale</h2>
-          </div>
-          <div class="bg-stone-200 border-2 border-green-950 p-2 text-right font-mono text-xs">
-            <span>Rapporto: <strong>1 Bullone ≈ 2,00 EUR</strong></span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          <!-- Card Tessera Virtuale Personale Dinamica -->
-          <div class="lg:col-span-5 bg-green-950 text-stone-100 border-4 border-green-950 p-6 brutal-shadow space-y-6 relative overflow-hidden">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">TESSERA DELL'OFFICINA</span>
-                <span id="card-holder-name" class="text-xl font-black uppercase font-mono">OSPITE TEMPORANEO</span>
-                <span id="card-holder-id" class="text-xs font-mono text-stone-400 block pt-0.5">MATRICOLA: SSL-NON-REGISTRATA</span>
-              </div>
-              <span class="text-3xl">🔩</span>
+        <!-- Striscia Tecnica & Profilo Altimetrico Sassello -> Monte Beigua -->
+        <div class="mt-16 pt-6 border-t border-white/[0.14] grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          <div class="lg:col-span-7 grid grid-cols-3 gap-4 font-mono-tech">
+            <div class="border-l border-[#c4532d] pl-3">
+              <span class="block text-xs text-[#69655e]">Flotta MY26</span>
+              <strong class="text-sm sm:text-base font-medium text-[#ebe6dd] mt-0.5 block">6 Alloy + 1 Carbon</strong>
             </div>
-
-            <div class="space-y-1">
-              <span class="text-xs font-mono text-stone-400">SALDO BULLONI ATTUALE</span>
-              <div class="text-5xl font-black font-mono text-yellow-400">
-                <span id="wallet-balance-display">0</span> <span class="text-xl text-stone-300">BULLONI</span>
-              </div>
-              <div class="text-[11px] font-mono text-stone-400">Valore spendibile in bottega: <span id="euro-balance-display">0.00</span> EUR</div>
+            <div class="border-l border-white/[0.16] pl-3">
+              <span class="block text-xs text-[#69655e]">Store & Cavalletto</span>
+              <strong class="text-sm sm:text-base font-medium text-[#ebe6dd] mt-0.5 block">Wear & Service</strong>
             </div>
-
-            <!-- Progresso Volta d'Onore -->
-            <div class="space-y-1 pt-2 border-t border-green-800 font-mono text-xs">
-              <div class="flex justify-between text-[11px]">
-                <span>Programma: <strong id="level-badge" class="text-emerald-400">Volta d'Onore</strong></span>
-                <span>Livello: <strong>Socio Bottega</strong></span>
-              </div>
-              <div class="w-full bg-green-900 h-3 border border-green-700">
-                <div id="level-progress-bar" class="bg-yellow-400 h-full w-[25%]"></div>
-              </div>
-            </div>
-
-            <!-- Codice Univoco per il Banco Cassa -->
-            <div class="bg-stone-100 text-green-950 p-4 border-2 border-green-950 font-mono text-xs flex items-center justify-between gap-4">
-              <div>
-                <strong class="block text-[12px] uppercase">Codice Cassa Personale</strong>
-                <span id="cassa-code-display" class="text-xs font-black tracking-widest text-red-600 block pt-0.5">SSL-0000</span>
-                <span class="text-[9px] text-stone-500">Mostra al bancone per accrediti e sconti</span>
-              </div>
-              <div class="w-14 h-14 bg-green-950 text-white flex flex-col items-center justify-center p-1 text-[9px] font-bold text-center border border-black shrink-0">
-                <span>PASS</span>
-                <span>OFFICINA</span>
-              </div>
+            <div class="border-l border-white/[0.16] pl-3">
+              <span class="block text-xs text-[#69655e]">Cashback Card</span>
+              <strong class="text-sm sm:text-base font-medium text-[#ebe6dd] mt-0.5 block">5% Legno • 10% Metallo</strong>
             </div>
           </div>
 
-          <!-- Ricariche Rapide Bulloni -->
-          <div class="lg:col-span-7 space-y-4">
-            <h3 class="text-xl font-black uppercase font-mono">Ricarica Bulloni nel Wallet</h3>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
-              <div class="border-4 border-green-950 bg-white p-5 brutal-shadow space-y-3">
-                <div class="flex justify-between items-baseline">
-                  <span class="font-black text-xl">10 BULLONI</span>
-                  <span class="text-2xl font-black text-red-600">20.00€</span>
-                </div>
-                <div class="bg-yellow-200 text-green-950 text-xs font-bold p-1 border border-green-950 text-center">
-                  +1 BULLONE EXTRA OMAGGIO
-                </div>
-                <p class="text-[11px] text-green-800 leading-tight">
-                  Valido per regolazione cambio, centratura ruota o sconti su accessori e abbigliamento.
-                </p>
-                <button class="charge-btn w-full bg-green-950 text-yellow-400 py-3 uppercase font-black text-sm border-2 border-green-950 hover:bg-emerald-500 hover:text-green-950 transition-colors" data-pack="10" data-bonus="1" data-price="20">
-                  Ricarica 10 (+1 Extra) →
-                </button>
-              </div>
-
-              <div class="border-4 border-green-950 bg-yellow-400 p-5 brutal-shadow space-y-3 relative">
-                <span class="absolute -top-3 right-3 bg-red-600 text-white text-[9px] font-black px-2 py-0.5 uppercase border-2 border-green-950">
-                  Più Conveniente
-                </span>
-                <div class="flex justify-between items-baseline">
-                  <span class="font-black text-xl">25 BULLONI</span>
-                  <span class="text-2xl font-black text-green-950">50.00€</span>
-                </div>
-                <div class="bg-white text-green-950 text-xs font-bold p-1 border border-green-950 text-center">
-                  +4 BULLONI EXTRA OMAGGIO
-                </div>
-                <p class="text-[11px] text-green-900 leading-tight">
-                  Include 1 ingresso per l'<strong>Estrazione del Tubo Zincato</strong>.
-                </p>
-                <button class="charge-btn w-full bg-green-950 text-white py-3 uppercase font-black text-sm border-2 border-green-950 hover:bg-red-600 transition-colors" data-pack="25" data-bonus="4" data-price="50">
-                  Ricarica 25 (+4 Extra) →
-                </button>
-              </div>
+          <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end justify-between gap-2">
+            <div class="flex items-center gap-4 font-mono-tech text-xs text-[#9e9990]">
+              <span>Sassello <strong class="text-[#ebe6dd] font-medium">385 m</strong></span>
+              <span>→</span>
+              <span>Monte Beigua <strong class="text-[#ebe6dd] font-medium">1.287 m</strong></span>
+              <span class="text-[#c4532d] font-medium">+902 m</span>
             </div>
-
-            <div class="border-4 border-green-950 bg-red-600 text-white p-4 brutal-shadow flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
-              <div>
-                <strong class="block text-sm uppercase">Estrazione del Tubo Zincato</strong>
-                <span>Prossima estrazione premi riservata ai titolari della tessera:</span>
-              </div>
-              <div class="bg-white text-green-950 px-3 py-1.5 font-black text-base border-2 border-green-950">
-                <span id="countdown-pwa">3G 00:00:00</span>
-              </div>
-            </div>
+            <svg class="w-full sm:w-64 lg:w-80 h-8 text-[#c4532d]" viewBox="0 0 320 32" fill="none" aria-hidden="true">
+              <line x1="0" y1="30" x2="320" y2="30" stroke="rgba(235,230,221,0.14)" stroke-width="1" />
+              <path
+                d="M0 28 L42 25 L86 26 L132 18 L178 14 L224 5 L268 12 L320 22"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="square"
+              />
+              <rect x="221" y="2" width="6" height="6" fill="#ebe6dd" />
+            </svg>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEZIONE SCORTE IN ESAURIMENTO -->
-    <section id="alerts" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-200">
-      <div class="max-w-7xl mx-auto space-y-8 font-mono">
-        <div class="flex items-center justify-between border-b-4 border-green-950 pb-4">
-          <div>
-            <span class="text-xs font-bold text-red-600 uppercase">Alert Inventario Live</span>
-            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">Scorte Limitate</h2>
-          </div>
-          <button id="test-alert-btn" class="text-xs font-bold uppercase bg-stone-100 border-2 border-green-950 px-3 py-1 brutal-shadow hover:bg-yellow-400">
-            🔔 Allerta Bottega
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
-            <span class="absolute -top-3 left-4 bg-red-600 text-white text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
-              ULTIMI 2 PEZZI
-            </span>
-            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
-              <img src="/images/helmet-fox.jpg" alt="Casco FOX MIPS" class="w-full h-full object-cover" />
-            </div>
-            <div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="font-black text-base uppercase">Casco FOX MIPS</h4>
-                <span class="font-bold text-red-600">140€</span>
-              </div>
-              <p class="text-[11px] text-green-800 pt-1">Taglia M/L. Non ne arrivano altri prima di primavera.</p>
-            </div>
-            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Casco FOX MIPS" data-bulloni="5">
-              Blocca 24h (5 Bulloni)
-            </button>
-          </div>
-
-          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
-            <span class="absolute -top-3 left-4 bg-amber-500 text-green-950 text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
-              SOLO 3 DISPONIBILI
-            </span>
-            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
-              <img src="/images/wear-flannel.jpg" alt="Flanella" class="w-full h-full object-cover" />
-            </div>
-            <div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="font-black text-base uppercase">Overshirt Flanella</h4>
-                <span class="font-bold text-red-600">85€</span>
-              </div>
-              <p class="text-[11px] text-green-800 pt-1">400g antivento da bosco e officina.</p>
-            </div>
-            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Overshirt Flanella" data-bulloni="5">
-              Blocca 24h (5 Bulloni)
-            </button>
-          </div>
-
-          <div class="border-4 border-green-950 bg-white p-4 brutal-shadow space-y-3 relative">
-            <span class="absolute -top-3 left-4 bg-emerald-500 text-green-950 text-[10px] font-black uppercase px-2 py-0.5 border-2 border-green-950">
-              NUOVO ARRIVO
-            </span>
-            <div class="aspect-square bg-stone-100 border-2 border-green-950 overflow-hidden">
-              <img src="/images/wear-beanie.jpg" alt="Berretto Beanie" class="w-full h-full object-cover" />
-            </div>
-            <div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="font-black text-base uppercase">Beanie Lana Spessa</h4>
-                <span class="font-bold text-red-600">28€</span>
-              </div>
-              <p class="text-[11px] text-green-800 pt-1">Tenuta termica rigida per fine uscita.</p>
-            </div>
-            <button class="lock-item-btn w-full bg-yellow-400 text-green-950 border-2 border-green-950 py-2 uppercase font-black text-xs hover:bg-green-950 hover:text-white transition-colors" data-item="Beanie Lana Spessa" data-bulloni="2">
-              Blocca 24h (2 Bulloni)
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEZIONE OASY ASD: SINCRONIZZATA CON IL SITO UFFICIALE -->
-    <section id="asd-oasy" class="p-4 sm:p-10 border-b-4 border-green-950 bg-stone-100">
-      <div class="max-w-7xl mx-auto space-y-8 font-mono">
-        <div class="border-4 border-green-950 bg-emerald-600 text-stone-100 p-6 brutal-shadow flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div class="space-y-1">
-            <span class="bg-stone-100 text-green-950 text-[10px] font-black uppercase px-2 py-0.5">
-              SETTORE SPORTIVO NON-PROFIT &bull; CSEN
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">
-              Outdoor Activity Sassello ASD
+    <!-- BLOCCO 2: FLOTTA HEPHA MY26 — GRIGLIA ATTACCO FINALE (55 / 69 / 89 / 129 €) -->
+    <section id="flotta" class="py-16 px-4 sm:px-6 border-b border-white/[0.11] bg-[#0e0e0d]">
+      <div class="max-w-7xl mx-auto space-y-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/[0.10] pb-6">
+          <div class="max-w-3xl space-y-2">
+            <span class="block text-xs font-mono-tech text-[#c4532d]">Flotta Reale MY26 • 6 Alloy Performance + 1 Carbon Ultra</span>
+            <h2 class="font-display-raw text-3xl sm:text-5xl tracking-tight text-[#ebe6dd]">
+              Hepha All Mountain 7 • Pacchetti Ristoro & Tour Guidati
             </h2>
-            <p class="text-xs text-emerald-100 max-w-xl">
-              Associazione affiliata CSEN e iscritta al RASD. Calendario uscite, tesseramento assicurativo e tutela dei sentieri del Beigua Geopark.
+            <p class="text-sm sm:text-base text-[#9e9990] leading-relaxed">
+              Le nostre <strong class="text-[#ebe6dd] font-medium">6 Hepha All Mountain 7 Alloy Performance</strong> (100 Nm, batteria 800 Wh, sospensioni 150 mm) escono in formule complete con tracce GPX, aperitivo o pranzo tipico e cashback diretto sulla tua Card — oppure nel <strong class="text-[#ebe6dd] font-medium">Full Day Guidato (max 6 posti)</strong> con guida locale su <strong class="text-[#ebe6dd] font-medium">Hepha 7 Carbon Ultra</strong>.
             </p>
           </div>
-          <a href="https://asdoasy.it" target="_blank" rel="noopener noreferrer" class="bg-stone-100 text-green-950 px-5 py-3 font-black uppercase text-xs border-2 border-green-950 brutal-shadow shrink-0 hover:bg-yellow-400 text-center">
-            Vai al Sito Ufficiale ASD (asdoasy.it) 🌲
+
+          <div class="bg-[#161514] border border-white/[0.14] px-4 py-3 font-mono-tech text-xs space-y-1 shrink-0">
+            <div class="flex items-center gap-2 text-[#ebe6dd]">
+              <span class="w-2 h-2 bg-[#4d7c5b]"></span>
+              <span>6 AM7 Alloy prenotabili</span>
+            </div>
+            <div class="text-[#9e9990]">1 Carbon Ultra riservata alla guida</div>
+          </div>
+        </div>
+
+        <!-- Barra Specifiche Meccaniche -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 border border-white/[0.11] bg-[#161514] divide-y lg:divide-y-0 lg:divide-x divide-white/[0.11]">
+          <div class="p-5">
+            <span class="block text-xs font-mono-tech text-[#69655e]">Coppia motore</span>
+            <span class="block font-display-raw text-3xl text-[#ebe6dd] mt-1">100 Nm</span>
+            <span class="block text-xs text-[#9e9990] mt-1">Spinta piena sulle rampe del Beigua</span>
+          </div>
+          <div class="p-5">
+            <span class="block text-xs font-mono-tech text-[#69655e]">Batteria integrata</span>
+            <span class="block font-display-raw text-3xl text-[#ebe6dd] mt-1">800 Wh</span>
+            <span class="block text-xs text-[#9e9990] mt-1">Autonomia reale per tutta la giornata</span>
+          </div>
+          <div class="p-5">
+            <span class="block text-xs font-mono-tech text-[#69655e]">Escursione</span>
+            <span class="block font-display-raw text-3xl text-[#ebe6dd] mt-1">150 mm</span>
+            <span class="block text-xs text-[#9e9990] mt-1">Forcella e mono RockShox tarati al banco</span>
+          </div>
+          <div class="p-5">
+            <span class="block text-xs font-mono-tech text-[#69655e]">Bici Guida</span>
+            <span class="block font-display-raw text-3xl text-[#c4532d] mt-1">Carbon Ultra</span>
+            <span class="block text-xs text-[#9e9990] mt-1">Non a noleggio, usata solo dalla guida</span>
+          </div>
+        </div>
+
+        <!-- Selettore 4 Formule -->
+        <div id="rental-configurator" class="bg-[#161514] border border-white/[0.14] p-6 sm:p-8 space-y-8">
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+              <h3 class="text-sm font-mono-tech font-medium text-[#ebe6dd]">1. Seleziona la formula di uscita</h3>
+              <span class="text-xs font-mono-tech text-[#c4532d]">Con i pacchetti hai ristoro, GPX e 5% / 10% di cashback sulla Card</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- 0. DECOY SOLO NOLEGGIO (55 €) -->
+              <button
+                type="button"
+                data-pack="Solo Noleggio (Mezza Giornata 4h • Solo Mar–Ven)"
+                data-price="55"
+                data-cashback-eligible="false"
+                data-weekday-only="true"
+                class="rental-pack-btn p-5 text-left border border-white/[0.10] bg-[#0e0e0d] hover:border-white/[0.24] transition-colors duration-150 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex justify-between items-center font-mono-tech text-xs text-[#69655e]">
+                    <span>Solo Mar–Ven</span>
+                    <span>4 ore</span>
+                  </div>
+                  <h4 class="font-medium text-[#9e9990] mt-2 text-base">Solo Noleggio</h4>
+                  <p class="text-xs text-[#69655e] mt-2 leading-relaxed">
+                    Solo mezzo e casco. Nessuna traccia GPX, nessun ristoro, escluso dal cashback Card. Cauzione 300 € al banco. Non disponibile nel weekend.
+                  </p>
+                </div>
+                <div class="mt-6 pt-3 border-t border-white/[0.08] flex items-baseline justify-between">
+                  <span class="font-mono-tech font-semibold text-lg text-[#69655e]">55,00 €</span>
+                  <span class="text-xs font-mono-tech text-[#69655e]">0% cashback</span>
+                </div>
+              </button>
+
+              <!-- 1. MEZZA GIORNATA + APERITIVO (69 € - DEFAULT SELECTED) -->
+              <button
+                type="button"
+                data-pack="Mezza Giornata + Aperitivo (4h • Mar–Dom)"
+                data-price="69"
+                data-cashback-eligible="true"
+                data-weekday-only="false"
+                class="rental-pack-btn is-selected p-5 text-left border border-[#c4532d] bg-[#1f1e1c] transition-colors duration-150 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex justify-between items-center font-mono-tech text-xs">
+                    <span class="text-[#c4532d]">Più scelta</span>
+                    <span class="text-[#ebe6dd]">4h • Mar–Dom</span>
+                  </div>
+                  <h4 class="font-medium text-[#ebe6dd] mt-2 text-base">Mezza Giornata + Aperitivo</h4>
+                  <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                    Hepha AM7 Alloy + tracce GPX precaricate + aperitivo tipico a Sassello (tagliere locale e calice/birra) al rientro in piazza.
+                  </p>
+                </div>
+                <div class="mt-6 pt-3 border-t border-white/[0.12] flex items-baseline justify-between">
+                  <span class="font-mono-tech font-semibold text-lg text-[#ebe6dd]">69,00 €</span>
+                  <span class="text-xs font-mono-tech text-[#4d7c5b]">Card: 5% / 10%</span>
+                </div>
+              </button>
+
+              <!-- 2. GIORNATA INTERA + PRANZO TIPICO (89 €) -->
+              <button
+                type="button"
+                data-pack="Giornata Intera + Pranzo Tipico (09:00–17:30 • Mar–Dom)"
+                data-price="89"
+                data-cashback-eligible="true"
+                data-weekday-only="false"
+                class="rental-pack-btn p-5 text-left border border-white/[0.10] bg-[#0e0e0d] hover:border-white/[0.24] transition-colors duration-150 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex justify-between items-center font-mono-tech text-xs text-[#9e9990]">
+                    <span>Mar–Dom</span>
+                    <span>09:00–17:30</span>
+                  </div>
+                  <h4 class="font-medium text-[#ebe6dd] mt-2 text-base">Giornata Intera + Pranzo Tipico</h4>
+                  <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                    Giornata intera sui crinali con tracce GPX offline e pranzo tipico completo prenotato in rifugio o trattoria convenzionata.
+                  </p>
+                </div>
+                <div class="mt-6 pt-3 border-t border-white/[0.08] flex items-baseline justify-between">
+                  <span class="font-mono-tech font-semibold text-lg text-[#ebe6dd]">89,00 €</span>
+                  <span class="text-xs font-mono-tech text-[#4d7c5b]">Card: 5% / 10%</span>
+                </div>
+              </button>
+
+              <!-- 3. FULL DAY GUIDATO + PRANZO + APERITIVO (129 €) -->
+              <button
+                type="button"
+                data-pack="Full Day Guidato + Pranzo + Aperitivo (Max 6 Posti)"
+                data-price="129"
+                data-cashback-eligible="true"
+                data-weekday-only="false"
+                class="rental-pack-btn p-5 text-left border border-white/[0.10] bg-[#0e0e0d] hover:border-white/[0.24] transition-colors duration-150 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex justify-between items-center font-mono-tech text-xs text-[#9e9990]">
+                    <span>Intera giornata</span>
+                    <span>Max 6 posti</span>
+                  </div>
+                  <h4 class="font-medium text-[#ebe6dd] mt-2 text-base">Full Day Guidato + Pranzo + Aperitivo</h4>
+                  <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                    Tour accompagnato (guida su Hepha 7 Carbon Ultra), tracciato cucito su meteo e livello, pranzo completo e aperitivo finale in bottega.
+                  </p>
+                </div>
+                <div class="mt-6 pt-3 border-t border-white/[0.08] flex items-baseline justify-between">
+                  <span class="font-mono-tech font-semibold text-lg text-[#ebe6dd]">129,00 €</span>
+                  <span class="text-xs font-mono-tech text-[#4d7c5b]">Card: 5% / 10%</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Taglia & Data -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-white/[0.10]">
+            <div>
+              <span class="block text-sm font-mono-tech text-[#ebe6dd] mb-3">2. Taglia telaio (Hepha AM7 Alloy)</span>
+              <div class="grid grid-cols-3 gap-3">
+                <button type="button" data-size="S (155-168 cm)" class="rental-size-btn py-3 px-3 border border-white/[0.12] bg-[#0e0e0d] text-center transition-colors duration-150">
+                  <span class="block text-sm font-medium text-[#ebe6dd]">Taglia S</span>
+                  <span class="block text-xs font-mono-tech text-[#69655e] mt-0.5">155–168 cm</span>
+                </button>
+                <button type="button" data-size="M (168-180 cm)" class="rental-size-btn is-selected py-3 px-3 border border-[#c4532d] bg-[#1f1e1c] text-center transition-colors duration-150">
+                  <span class="block text-sm font-medium text-[#ebe6dd]">Taglia M</span>
+                  <span class="block text-xs font-mono-tech text-[#9e9990] mt-0.5">168–180 cm</span>
+                </button>
+                <button type="button" data-size="L (180-195 cm)" class="rental-size-btn py-3 px-3 border border-white/[0.12] bg-[#0e0e0d] text-center transition-colors duration-150">
+                  <span class="block text-sm font-medium text-[#ebe6dd]">Taglia L</span>
+                  <span class="block text-xs font-mono-tech text-[#69655e] mt-0.5">180–195 cm</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label for="rental-date-input" class="block text-sm font-mono-tech text-[#ebe6dd] mb-3">3. Data richiesta</label>
+              <input
+                id="rental-date-input"
+                type="date"
+                class="w-full h-[62px] bg-[#0e0e0d] border border-white/[0.14] text-[#ebe6dd] font-mono-tech text-sm px-4 focus:border-[#c4532d] focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Riepilogo & CTA -->
+          <div class="pt-6 border-t border-white/[0.10] flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="space-y-1.5">
+              <div id="rental-summary-line" class="text-xs font-mono-tech text-[#ebe6dd]">
+                Mezza Giornata + Aperitivo (4h • Mar–Dom) • Taglia M
+              </div>
+              <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-[#9e9990]">
+                <span>Casco igienizzato incluso</span>
+                <span>•</span>
+                <span>Taratura sospensioni al banco</span>
+                <span>•</span>
+                <span id="rental-bonus-note" class="text-[#4d7c5b] font-mono-tech">Con Card: maturi 3,45 € (Legno) o 6,90 € (Metallo)</span>
+              </div>
+            </div>
+
+            <button
+              id="book-rental-whatsapp-btn"
+              type="button"
+              class="h-12 px-6 bg-[#c4532d] hover:bg-[#9e3f1f] text-[#ebe6dd] text-sm font-medium transition-colors duration-150 inline-flex items-center justify-center gap-2 shrink-0"
+            >
+              <span>Verifica disponibilità su WhatsApp</span>
+              <span id="rental-cta-price" class="font-mono-tech font-semibold">— 69,00 €</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 3: LA BOTTEGA & CAPI IN EVIDENZA SUGLI SCAFFALI IN TUBI ZINCATI -->
+    <section id="bottega" class="py-16 px-4 sm:px-6 border-b border-white/[0.11] bg-[#0e0e0d]">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-white/[0.10] pb-8">
+          <div class="lg:col-span-7 space-y-3">
+            <span class="block text-xs font-mono-tech text-[#c4532d]">Sugli scaffali in tubi zincati</span>
+            <h2 class="font-display-raw text-3xl sm:text-5xl tracking-tight text-[#ebe6dd]">
+              Abbigliamento tecnico, streetwear e ricambi al banco
+            </h2>
+            <p class="text-sm sm:text-base text-[#9e9990] leading-relaxed">
+              Uno spazio fisico senza plastica: pareti in pietra, dettagli in marmo, volte in mattoni a vista e strutture in legno grezzo e ferro zincato. Prezzi chiari in Euro; se hai <strong class="text-[#ebe6dd] font-medium">Card Legno</strong> o <strong class="text-[#ebe6dd] font-medium">Card Metallo</strong> accumuli automaticamente il <strong class="text-[#ebe6dd] font-medium">5%</strong> o il <strong class="text-[#ebe6dd] font-medium">10% di cashback</strong> su abbigliamento e accessori a listino pieno.
+            </p>
+          </div>
+          <div class="lg:col-span-5 grid grid-cols-2 gap-4 text-xs">
+            <div class="bg-[#161514] border border-white/[0.12] p-4">
+              <strong class="block text-[#ebe6dd] font-medium mb-1">FOX, DC, Quiksilver, Roxy</strong>
+              <span class="text-[#9e9990]">Gusci 3L impermeabili, pantaloni MTB, giacche tecniche, pile e streetwear</span>
+            </div>
+            <div class="bg-[#161514] border border-white/[0.12] p-4">
+              <strong class="block text-[#ebe6dd] font-medium mb-1">Bici & Ricambi al banco</strong>
+              <span class="text-[#9e9990]">E-bike Hepha, sigillanti, pastiglie freno, catene, copertoni e consumabili</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="alerts" class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <h3 class="text-base font-mono-tech font-medium text-[#ebe6dd]">Capi in evidenza • Giacenze reali in bottega</h3>
+            <span class="text-xs font-mono-tech text-[#9e9990]">Li provi in Piazza della Concezione o li blocchi gratis 24 ore con Card Legno / Metallo</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- CAPO 1: DC GIACCA FRAMED JACKET GOLD (140,00 €) -->
+            <article class="border border-white/[0.14] bg-[#161514] flex flex-col justify-between">
+              <div>
+                <div class="aspect-[4/5] w-full bg-[#0e0e0d] border-b border-white/[0.10] relative overflow-hidden">
+                  <img
+                    src="/images/capi/dc-framed-jacket-gold.jpg"
+                    onerror="this.style.display='none';"
+                    alt="DC Giacca Framed Jacket Gold su scaffale in tubi zincati Outsider Sassello"
+                    class="w-full h-full object-cover object-center"
+                  />
+                  <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                    <span class="bg-[#0e0e0d]/90 border border-white/[0.18] text-[#ebe6dd] text-xs font-mono-tech px-2.5 py-1">
+                      Solo 2 pezzi
+                    </span>
+                    <span class="bg-[#4d7c5b] text-[#ebe6dd] text-xs font-mono-tech font-medium px-2.5 py-1">
+                      Cashback 7 € / 14 €
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6 space-y-2">
+                  <div class="flex justify-between items-baseline gap-2">
+                    <span class="text-xs font-mono-tech text-[#69655e]">DC SHOES • GOLD</span>
+                    <span class="font-mono-tech font-semibold text-base text-[#ebe6dd]">140,00 €</span>
+                  </div>
+                  <h4 class="font-semibold text-base text-[#ebe6dd]">DC Giacca Framed Jacket</h4>
+                  <p class="text-xs text-[#9e9990] leading-relaxed">
+                    Giacca imbottita antivento per dopocorsa, montagna e inverno in paese. Con Card ricevi <strong class="text-[#ebe6dd] font-medium">7,00 €</strong> (Legno 5%) o <strong class="text-[#ebe6dd] font-medium">14,00 €</strong> (Metallo 10%) per il prossimo acquisto.
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-6 pb-6">
+                <button
+                  class="lock-item-btn w-full h-10 bg-[#1f1e1c] hover:bg-[#c4532d] text-[#ebe6dd] border border-white/[0.14] font-mono-tech text-xs transition-colors duration-150"
+                  data-item="DC Giacca Framed Jacket Gold (140,00 €)"
+                >
+                  Blocca 24h in bottega (Solo Card)
+                </button>
+              </div>
+            </article>
+
+            <!-- CAPO 2: ROXY GIACCA NOT SO BASIC BEAU BLUE (110,00 €) -->
+            <article class="border border-white/[0.14] bg-[#161514] flex flex-col justify-between">
+              <div>
+                <div class="aspect-[4/5] w-full bg-[#0e0e0d] border-b border-white/[0.10] relative overflow-hidden">
+                  <img
+                    src="/images/capi/roxy-not-so-basic-beau-blue.jpg"
+                    onerror="this.style.display='none';"
+                    alt="ROXY Giacca Not So Basic Beau Blue sul bancone in marmo Outsider Sassello"
+                    class="w-full h-full object-cover object-center"
+                  />
+                  <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                    <span class="bg-[#0e0e0d]/90 border border-white/[0.18] text-[#ebe6dd] text-xs font-mono-tech px-2.5 py-1">
+                      3 pezzi disp.
+                    </span>
+                    <span class="bg-[#4d7c5b] text-[#ebe6dd] text-xs font-mono-tech font-medium px-2.5 py-1">
+                      Cashback 5,50 € / 11 €
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6 space-y-2">
+                  <div class="flex justify-between items-baseline gap-2">
+                    <span class="text-xs font-mono-tech text-[#69655e]">ROXY • BEAU BLUE</span>
+                    <span class="font-mono-tech font-semibold text-base text-[#ebe6dd]">110,00 €</span>
+                  </div>
+                  <h4 class="font-semibold text-base text-[#ebe6dd]">ROXY Giacca Not So Basic</h4>
+                  <p class="text-xs text-[#9e9990] leading-relaxed">
+                    Taglio pulito e protezione termica per tutti i giorni. Con Card ricevi <strong class="text-[#ebe6dd] font-medium">5,50 €</strong> (Legno 5%) o <strong class="text-[#ebe6dd] font-medium">11,00 €</strong> (Metallo 10%) di credito.
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-6 pb-6">
+                <button
+                  class="lock-item-btn w-full h-10 bg-[#1f1e1c] hover:bg-[#c4532d] text-[#ebe6dd] border border-white/[0.14] font-mono-tech text-xs transition-colors duration-150"
+                  data-item="ROXY Giacca Not So Basic Beau Blue (110,00 €)"
+                >
+                  Blocca 24h in bottega (Solo Card)
+                </button>
+              </div>
+            </article>
+
+            <!-- CAPO 3: FOX DEFEND FIRE PANT (200,00 €) -->
+            <article class="border border-white/[0.14] bg-[#161514] flex flex-col justify-between">
+              <div>
+                <div class="aspect-[4/5] w-full bg-[#0e0e0d] border-b border-white/[0.10] relative overflow-hidden">
+                  <img
+                    src="/images/capi/fox-defend-fire-pant.jpg"
+                    onerror="this.style.display='none';"
+                    alt="FOX Defend Fire Pant su tubo zincato Outsider Sassello"
+                    class="w-full h-full object-cover object-center"
+                  />
+                  <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                    <span class="bg-[#0e0e0d]/90 border border-[#c4532d] text-[#c4532d] text-xs font-mono-tech px-2.5 py-1">
+                      Ultimo pezzo (1 disp.)
+                    </span>
+                    <span class="bg-[#4d7c5b] text-[#ebe6dd] text-xs font-mono-tech font-medium px-2.5 py-1">
+                      Cashback 10 € / 20 €
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6 space-y-2">
+                  <div class="flex justify-between items-baseline gap-2">
+                    <span class="text-xs font-mono-tech text-[#69655e]">FOX MTB • TECNICO</span>
+                    <span class="font-mono-tech font-semibold text-base text-[#ebe6dd]">200,00 €</span>
+                  </div>
+                  <h4 class="font-semibold text-base text-[#ebe6dd]">FOX Defend Fire Pant</h4>
+                  <p class="text-xs text-[#9e9990] leading-relaxed">
+                    Pantalone invernale antistrappo e idrorepellente per fango e freddo sul Beigua. Con Card ricevi <strong class="text-[#ebe6dd] font-medium">10,00 €</strong> (Legno 5%) o <strong class="text-[#ebe6dd] font-medium">20,00 €</strong> (Metallo 10%) sulla Card.
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-6 pb-6">
+                <button
+                  class="lock-item-btn w-full h-10 bg-[#1f1e1c] hover:bg-[#c4532d] text-[#ebe6dd] border border-white/[0.14] font-mono-tech text-xs transition-colors duration-150"
+                  data-item="FOX Defend Fire Pant (200,00 €)"
+                >
+                  Blocca 24h in bottega (Solo Card)
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 4: OFFICINA & LISTINO CAVALLETTO (SOLO PREZZI CHIARI IN EURO) -->
+    <section id="officina" class="py-16 px-4 sm:px-6 border-b border-white/[0.11] bg-[#0e0e0d]">
+      <div class="max-w-7xl mx-auto space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.10] pb-6">
+          <div class="max-w-2xl space-y-2">
+            <span class="block text-xs font-mono-tech text-[#c4532d]">Interventi rapidi e tagliandi</span>
+            <h2 class="font-display-raw text-3xl sm:text-5xl tracking-tight text-[#ebe6dd]">
+              Officina e listino cavalletto
+            </h2>
+            <p class="text-sm sm:text-base text-[#9e9990] leading-relaxed">
+              Spurghi, centrature, latticizzazioni e revisioni pre-uscita. Tariffe chiare in Euro: sulla manodopera maturi il <strong class="text-[#ebe6dd] font-medium">5% o 10% di cashback</strong> oppure scali il credito già accumulato sulla tua Card.
+            </p>
+          </div>
+
+          <a
+            href="https://wa.me/393473590128?text=Ciao%20Outsider%20SSL%20///%2017046!%20Devo%20portare%20la%20bici%20sul%20cavalletto%20in%20officina:"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="h-11 px-5 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] text-xs font-mono-tech font-medium inline-flex items-center gap-2 self-start md:self-auto transition-colors duration-150"
+          >
+            <span>Fissa il cavalletto su WhatsApp</span>
+            <span>→</span>
           </a>
         </div>
 
-        <div class="border-4 border-green-950 bg-white p-6 brutal-shadow grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div class="md:col-span-6 space-y-3">
-            <span class="text-xs font-bold text-red-600 uppercase">Uscita Ufficiale in Calendario</span>
-            <h3 class="text-2xl font-black uppercase leading-none">Al Faggio Secolare &bull; Castagnata</h3>
-            <p class="text-xs text-green-900 leading-relaxed">
-              Tappa ristoro in Bergnun, visita al patriarca arboreo e rientro in paese per le caldarroste. Pacco gara garantito con iscrizione online.
-            </p>
-            <div class="grid grid-cols-3 gap-2 text-center text-[11px] pt-1">
-              <div class="bg-stone-100 p-2 border border-green-950"><strong>11 KM</strong><br/>Sviluppo</div>
-              <div class="bg-stone-100 p-2 border border-green-950"><strong>+460 M</strong><br/>Dislivello</div>
-              <div class="bg-stone-100 p-2 border border-green-950"><strong>APERTO</strong><br/>Cammino/MTB</div>
+        <div class="border border-white/[0.14] bg-[#161514] divide-y divide-white/[0.09]">
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="font-medium text-base text-[#ebe6dd]">Latticizzazione e foratura express</h3>
+              <span class="text-xs text-[#9e9990] block mt-0.5">Sigillante fresco, pulizia valvola e tallonatura in pressione</span>
             </div>
+            <span class="bg-[#1f1e1c] border border-white/[0.12] px-4 py-2 font-mono-tech text-sm font-semibold text-[#ebe6dd] self-start sm:self-auto shrink-0">
+              6,00 €
+            </span>
           </div>
 
-          <div class="md:col-span-6 bg-stone-100 border-2 border-green-950 p-4 space-y-3">
-            <div class="flex items-center justify-between text-xs font-bold">
-              <span>ISCRIZIONE &amp; COPERTURA CSEN</span>
-              <span class="text-emerald-700">✓ Ufficiale OASY</span>
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="font-medium text-base text-[#ebe6dd]">Registrazione cambio e freni</h3>
+              <span class="text-xs text-[#9e9990] block mt-0.5">Dima forcellino, tensione cavo/elettronico e spurgo rapido impianto</span>
             </div>
-            <p class="text-[11px] text-stone-600">
-              Registrati direttamente sulla piattaforma ufficiale di OASY ASD con saldo carta Stripe o riserva al ritrovo.
-            </p>
-            <a href="https://asdoasy.it/uscite/faggio-castagnata" target="_blank" class="w-full bg-green-950 text-yellow-400 py-3 uppercase font-black text-xs border-2 border-green-950 brutal-shadow flex items-center justify-center gap-2 hover:bg-emerald-600 hover:text-white transition-colors text-center">
-              <span>✍️</span> Iscriviti all'Uscita su asdoasy.it
-            </a>
+            <span class="bg-[#1f1e1c] border border-white/[0.12] px-4 py-2 font-mono-tech text-sm font-semibold text-[#ebe6dd] self-start sm:self-auto shrink-0">
+              8,00 €
+            </span>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="font-medium text-base text-[#ebe6dd]">Centratura ruota e tensione raggi</h3>
+              <span class="text-xs text-[#9e9990] block mt-0.5">Controllo campanatura e tensionamento sul centraruote in bottega</span>
+            </div>
+            <span class="bg-[#1f1e1c] border border-white/[0.12] px-4 py-2 font-mono-tech text-sm font-semibold text-[#ebe6dd] self-start sm:self-auto shrink-0">
+              10,00 €
+            </span>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="font-medium text-base text-[#ebe6dd]">Tagliando completo pre-uscita</h3>
+              <span class="text-xs text-[#9e9990] block mt-0.5">Usura trasmissione, serie sterzo, movimento centrale, cuscinetti e serraggi dinamometrici</span>
+            </div>
+            <span class="bg-[#c4532d]/20 border border-[#c4532d]/60 px-4 py-2 font-mono-tech text-sm font-semibold text-[#c4532d] self-start sm:self-auto shrink-0">
+              20,00 €
+            </span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER BOTTEGA -->
-    <footer class="p-6 border-t-4 border-green-950 bg-stone-200 font-mono text-xs text-green-900 text-center space-y-2">
-      <div class="font-black text-sm uppercase">OUTSIDEЯ BOTTEGA &bull; SASSELLO (SV) 17046</div>
-      <p class="text-[11px]">Centro Storico &bull; Pareti in Pietra, Volte &amp; Tubi Zincati &bull; Meeting Point OASY ASD</p>
-      <div class="flex justify-center gap-4 text-[11px] pt-2 font-bold">
-        <a href="https://wa.me/393473590128" target="_blank" rel="noopener noreferrer" class="hover:underline">WhatsApp Bottega</a>
-        <span>&bull;</span>
-        <a href="#wallet" class="hover:underline">Tessera Personale</a>
-        <span>&bull;</span>
-        <button id="reset-profile-btn" class="text-red-700 underline uppercase">Resetta Profilo</button>
+    <!-- BLOCCO 5: I 3 LIVELLI (MATRICOLA DIGITALE, CARD LEGNO 5%, CARD METALLO 10% + OASY ASD) -->
+    <section id="tessera" class="py-16 px-4 sm:px-6 border-b border-white/[0.11] bg-[#0e0e0d]">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.10] pb-6">
+          <div class="max-w-2xl space-y-2">
+            <span class="block text-xs font-mono-tech text-[#c4532d]">Supporti fisici incisi al laser • Zero punti inventati</span>
+            <h2 class="font-display-raw text-3xl sm:text-5xl tracking-tight text-[#ebe6dd]">
+              Matricola Digitale, Card Legno e Card Metallo
+            </h2>
+            <p class="text-sm text-[#9e9990] leading-relaxed">
+              Nessuna raccolta punti e nessun calcolo da fare: accumuli direttamente <strong class="text-[#ebe6dd] font-medium">Euro di cashback</strong> sulla tua Card fisica da spendere dal passaggio successivo. Entrambe le tessere fisiche si ritirano al banco con un primo scontrino valido da almeno <strong class="text-[#ebe6dd] font-medium">30,00 €</strong>.
+            </p>
+          </div>
+          <div class="bg-[#161514] border border-white/[0.12] px-4 py-2 font-mono-tech text-xs text-[#9e9990] self-start sm:self-auto">
+            Credito diretto: <strong class="text-[#ebe6dd] font-medium">Solo Euro reali (5% / 10%)</strong>
+          </div>
+        </div>
+
+        <!-- I 3 LIVELLI FISICI E DIGITALI -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- LIVELLO 01: MATRICOLA DIGITALE -->
+          <article class="border border-white/[0.12] bg-[#161514] p-6 sm:p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-white/[0.09] pb-3 font-mono-tech text-xs">
+                <span class="text-[#9e9990]">Livello 01 • Solo telefono</span>
+                <span class="text-[#ebe6dd] font-semibold">0,00 €</span>
+              </div>
+              <div>
+                <h3 class="font-display-raw text-2xl sm:text-3xl tracking-wide text-[#ebe6dd]">Matricola Digitale</h3>
+                <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                  Codice personale <span class="font-mono-tech text-[#ebe6dd]">SSL-XXXX</span> salvato sullo smartphone. Serve per prenotare il cavalletto, fissare le uscite in e-bike e tenere lo storico dei lavori.
+                </p>
+              </div>
+              <ul class="space-y-2 text-xs text-[#9e9990] pt-2 border-t border-white/[0.08]">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ebe6dd] font-mono-tech">—</span>
+                  <span>Prenotazione rapida officina e flotta e-bike</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ebe6dd] font-mono-tech">—</span>
+                  <span>Storico lavorazioni sul cavalletto</span>
+                </li>
+                <li class="flex items-start gap-2 text-[#69655e]">
+                  <span class="font-mono-tech">—</span>
+                  <span>0% cashback e nessuna convenzione esterna</span>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              id="tier1-activate-btn"
+              class="w-full h-11 bg-[#1f1e1c] hover:bg-[#2b2926] border border-white/[0.16] text-[#ebe6dd] text-xs font-mono-tech font-medium transition-colors duration-150"
+            >
+              Attiva Matricola Digitale
+            </button>
+          </article>
+
+          <!-- LIVELLO 02: CARD LEGNO (5% CASHBACK) -->
+          <article class="border border-white/[0.20] bg-[#161514] p-6 sm:p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-white/[0.09] pb-3 font-mono-tech text-xs">
+                <span class="text-[#ebe6dd]">Livello 02 • Negozio & Officina</span>
+                <span class="text-[#4d7c5b] font-semibold">Gratis (da 30 €)</span>
+              </div>
+              <div>
+                <h3 class="font-display-raw text-2xl sm:text-3xl tracking-wide text-[#ebe6dd]">Card Legno • 5%</h3>
+                <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                  Tessera fisica in <strong class="text-[#ebe6dd] font-medium">legno inciso al laser</strong> con QR Code personale. Te la consegniamo <strong class="text-[#ebe6dd] font-medium">gratis al banco</strong> al primo acquisto o lavoro valido da almeno <span class="font-mono-tech text-[#ebe6dd]">30,00 €</span>.
+                </p>
+              </div>
+              <ul class="space-y-2 text-xs text-[#9e9990] pt-2 border-t border-white/[0.08]">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#4d7c5b] font-mono-tech">+</span>
+                  <span><strong class="text-[#ebe6dd] font-medium">5% di cashback in Euro</strong> su abbigliamento, accessori, manodopera officina e pacchetti e-bike</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#4d7c5b] font-mono-tech">+</span>
+                  <span>Blocco gratuito <strong class="text-[#ebe6dd] font-medium">24 ore</strong> sui capi a scorta limitata</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#4d7c5b] font-mono-tech">+</span>
+                  <span><strong class="text-[#ebe6dd] font-medium">Nessuna scadenza</strong> sugli Euro accumulati</span>
+                </li>
+              </ul>
+            </div>
+
+            <a
+              href="https://wa.me/393473590128?text=Ciao%20Outsider%20SSL%20///%2017046!%20Passo%20in%20bottega%20per%20ritirare%20la%20Card%20Legno%20(5%25%20cashback)%20col%20primo%20acquisto%20da%2030%20€."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full h-11 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] text-xs font-mono-tech font-medium inline-flex items-center justify-center transition-colors duration-150"
+            >
+              Ritira al banco (da 30,00 €)
+            </a>
+          </article>
+
+          <!-- LIVELLO 03: CARD METALLO EDIZIONE ANNUALE + OASY ASD (10% CASHBACK) -->
+          <article class="border border-[#c4532d] bg-[#161514] p-6 sm:p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-white/[0.12] pb-3 font-mono-tech text-xs">
+                <span class="text-[#c4532d] font-medium">Livello 03 • Edizione 2027 Nera</span>
+                <span class="text-[#ebe6dd] font-semibold">+20,00 € / anno</span>
+              </div>
+              <div>
+                <h3 class="font-display-raw text-2xl sm:text-3xl tracking-wide text-[#ebe6dd]">Card Metallo + OASY ASD</h3>
+                <p class="text-xs text-[#9e9990] mt-2 leading-relaxed">
+                  Piastra in <strong class="text-[#ebe6dd] font-medium">alluminio anodizzato inciso al laser</strong> che cambia colore ogni anno (<strong class="text-[#ebe6dd] font-medium">2027 Nero Opaco</strong>). La attivi su un primo acquisto da almeno <span class="font-mono-tech text-[#ebe6dd]">30,00 €</span> aggiungendo i <strong class="text-[#ebe6dd] font-medium">20,00 €</strong> della quota annuale <strong class="text-[#ebe6dd] font-medium">OASY ASD</strong>.
+                </p>
+              </div>
+              <ul class="space-y-2 text-xs text-[#9e9990] pt-2 border-t border-white/[0.08]">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#c4532d] font-mono-tech">+</span>
+                  <span><strong class="text-[#ebe6dd] font-medium">10% di cashback in Euro</strong> su abbigliamento, accessori, manodopera officina e pacchetti e-bike</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#c4532d] font-mono-tech">+</span>
+                  <span><strong class="text-[#ebe6dd] font-medium">Tessera OASY ASD</strong> (<span class="font-mono-tech">www.asdoasy.it</span>) e copertura assicurativa CSEN</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#c4532d] font-mono-tech">+</span>
+                  <span><strong class="text-[#ebe6dd] font-medium">Convenzioni esclusive</strong> nei pub e locali partner di Sassello *(riconoscimento immediato dal colore dell'anno)*</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#c4532d] font-mono-tech">+</span>
+                  <span>Priorità sul cavalletto officina entro <strong class="text-[#ebe6dd] font-medium">48 ore</strong></span>
+                </li>
+              </ul>
+              <p class="text-[11px] text-[#69655e] leading-relaxed pt-2 border-t border-white/[0.08]">
+                Al rinnovo annuale (<span class="font-mono-tech text-[#9e9990]">20,00 €</span> quota ASD) ricevi la piastra nel colore del nuovo anno. Senza rinnovo scadono copertura OASY, priorità e convenzioni esterne, ma il tuo profilo resta valido al <strong class="text-[#9e9990] font-medium">5% di cashback</strong> con tutto il credito residuo.
+              </p>
+            </div>
+
+            <a
+              href="https://wa.me/393473590128?text=Ciao%20Outsider%20SSL%20///%2017046!%20Vorrei%20attivare%20al%20banco%20la%20Card%20Metallo%20Edizione%202027%20+%20OASY%20ASD%20(+20,00%20€%20con%20acquisto%20da%20almeno%2030%20€)."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full h-11 bg-[#c4532d] hover:bg-[#9e3f1f] text-[#ebe6dd] text-xs font-mono-tech font-medium inline-flex items-center justify-center transition-colors duration-150"
+            >
+              Richiedi Card Metallo 2027
+            </a>
+          </article>
+        </div>
+
+        <!-- AREA PERSONALE & 3 REGOLE TRASPARENTI SUL CASHBACK -->
+        <div id="saldo-card" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-6 border-t border-white/[0.10]">
+          <!-- PIASTRA / SALDO ATTIVO (5 Colonne) -->
+          <div class="lg:col-span-5">
+            <div id="wallet-guest-lock" class="workshop-plate border border-white/[0.18] p-6 sm:p-8 space-y-6">
+              <div class="flex items-center justify-between border-b border-white/[0.10] pb-4 font-mono-tech text-xs">
+                <span class="text-[#c4532d]">MATRICOLA // NON COLLEGATA</span>
+                <span class="text-[#69655e]">SSL /// 17046</span>
+              </div>
+
+              <div class="space-y-2">
+                <h3 class="font-display-raw text-2xl sm:text-3xl tracking-wide text-[#ebe6dd]">
+                  Il tuo saldo Card sul telefono
+                </h3>
+                <p class="text-sm text-[#9e9990] leading-relaxed">
+                  Attiva gratis la tua <strong class="text-[#ebe6dd] font-medium">Matricola Digitale</strong> per tenere sotto controllo gli Euro di cashback accumulati sulla tua <strong class="text-[#ebe6dd] font-medium">Card Legno</strong> o <strong class="text-[#ebe6dd] font-medium">Card Metallo</strong>.
+                </p>
+              </div>
+
+              <div class="bg-[#0e0e0d] border border-white/[0.12] p-4 font-mono-tech text-xs text-[#9e9990]">
+                Ritiro Card fisica al banco: con un primo scontrino valido da almeno <strong class="text-[#ebe6dd] font-medium">30,00 €</strong>.
+              </div>
+
+              <button
+                id="wallet-guest-cta"
+                class="w-full h-11 bg-[#c4532d] hover:bg-[#9e3f1f] text-[#ebe6dd] font-medium text-sm transition-colors duration-150"
+              >
+                Attiva Matricola Digitale
+              </button>
+            </div>
+
+            <div id="wallet-member-card" class="hidden workshop-plate border border-white/[0.22] p-6 sm:p-7 space-y-6">
+              <div class="flex justify-between items-start border-b border-white/[0.10] pb-4">
+                <div>
+                  <span class="text-xs font-mono-tech text-[#c4532d] block mb-1">OUTSIDER SSL /// 17046</span>
+                  <span id="card-holder-name" class="font-display-raw text-2xl tracking-wide text-[#ebe6dd] block">Socio</span>
+                  <span id="card-holder-id" class="text-xs font-mono-tech text-[#9e9990] block mt-1">Matricola: SSL-0000</span>
+                </div>
+                <button
+                  id="open-admin-btn"
+                  title="Terminale bancone"
+                  class="h-9 px-3 bg-[#0e0e0d] hover:border-[#c4532d] border border-white/[0.16] text-xs font-mono-tech text-[#9e9990] hover:text-[#ebe6dd] inline-flex items-center gap-1.5 transition-colors duration-150"
+                >
+                  <svg class="w-3.5 h-3.5 text-[#c4532d]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="1" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                  <span>Banco</span>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between bg-[#0e0e0d] border border-white/[0.12] px-3.5 py-2.5 font-mono-tech text-xs">
+                <span class="text-[#9e9990]">Supporto attivo:</span>
+                <span id="card-tier-badge" class="text-[#ebe6dd] font-medium">Livello 01 • Matricola Digitale (0%)</span>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-xs font-mono-tech text-[#9e9990]">Credito Cashback disponibile</span>
+                <div class="flex items-baseline gap-2">
+                  <span id="wallet-euro-display" class="font-display-raw text-5xl sm:text-6xl text-[#ebe6dd]">0,00</span>
+                  <span class="text-xl font-mono-tech text-[#9e9990]">€</span>
+                </div>
+                <div class="text-xs font-mono-tech text-[#9e9990] pt-1">
+                  Spendibile dal prossimo passaggio fino al <strong class="text-[#ebe6dd] font-medium">50%</strong> del conto
+                </div>
+              </div>
+
+              <div id="tier-benefits-note" class="pt-4 border-t border-white/[0.10] text-xs text-[#9e9990] leading-relaxed">
+                Passa al banco con un primo acquisto o lavoro da almeno 30,00 € per ritirare gratis la Card Legno (5%) o attivare la Card Metallo 2027 (+20,00 € OASY ASD • 10%).
+              </div>
+
+              <div class="bg-[#0e0e0d] border border-white/[0.10] p-4 flex items-center justify-between gap-4">
+                <div>
+                  <span class="block text-xs text-[#9e9990]">Codice matricola banco</span>
+                  <span id="cassa-code-display" class="text-base font-mono-tech font-semibold tracking-wider text-[#ebe6dd] block mt-0.5">SSL-0000</span>
+                  <span class="text-xs text-[#69655e] block mt-0.5">Mostra la Card o questo codice in cassa</span>
+                </div>
+                <button
+                  id="card-backup-cta"
+                  class="h-9 px-3 bg-[#1f1e1c] hover:bg-[#2b2926] text-[#ebe6dd] text-xs font-mono-tech border border-white/[0.14] shrink-0 transition-colors duration-150"
+                >
+                  Backup / Esci
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- COME FUNZIONA IL CASHBACK IN 3 REGOLE SECCHE (7 Colonne) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-base font-mono-tech font-medium text-[#ebe6dd]">Come funziona il Cashback (zero calcoli)</h3>
+              <span class="text-xs font-mono-tech text-[#9e9990]">1 Euro sulla Card = 1 Euro di sconto reale</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="border border-white/[0.14] bg-[#161514] p-6 space-y-3">
+                <span class="block text-xs font-mono-tech text-[#4d7c5b]">01 • Dove accumuli e spendi</span>
+                <h4 class="font-semibold text-base text-[#ebe6dd]">Bottega, Cavalletto e Tour</h4>
+                <p class="text-sm text-[#9e9990] leading-relaxed">
+                  Maturi e usi il tuo credito su <strong class="text-[#ebe6dd] font-medium">abbigliamento, accessori, manodopera d'officina e pacchetti e-bike con ristoro o guida</strong> a prezzo di listino pieno.
+                </p>
+                <p class="text-xs font-mono-tech text-[#69655e] pt-2 border-t border-white/[0.08]">
+                  Esclusi: bici complete, ricambi meccanici/gomme, Solo Noleggio feriale e saldi.
+                </p>
+              </div>
+
+              <div class="border border-white/[0.14] bg-[#161514] p-6 space-y-3">
+                <span class="block text-xs font-mono-tech text-[#c4532d]">02 • Quando e quanto scali</span>
+                <h4 class="font-semibold text-base text-[#ebe6dd]">Dal passaggio successivo (fino al 50%)</h4>
+                <p class="text-sm text-[#9e9990] leading-relaxed">
+                  Gli Euro maturati oggi sono attivi <strong class="text-[#ebe6dd] font-medium">dallo scontrino successivo</strong> e possono coprire <strong class="text-[#ebe6dd] font-medium">fino a metà conto (50%)</strong>. Il credito residuo non scade mai.
+                </p>
+                <p class="text-xs font-mono-tech text-[#69655e] pt-2 border-t border-white/[0.08]">
+                  Esempio: hai 14 € sulla Card → su un tagliando da 20 € scali 10 € e paghi 10 €.
+                </p>
+              </div>
+            </div>
+
+            <!-- Box Antifrode & Colore Annuale Card Metallo -->
+            <div class="border border-white/[0.14] bg-[#161514] p-6 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-mono-tech text-[#c4532d]">03 • Card Metallo a Cambio Colore Annuale & Convenzioni Sassello</span>
+                <span class="text-xs font-mono-tech text-[#ebe6dd] bg-[#0e0e0d] border border-white/[0.12] px-2.5 py-1">2027: Nero Opaco</span>
+              </div>
+              <p class="text-xs text-[#9e9990] leading-relaxed">
+                Ogni anno la <strong class="text-[#ebe6dd] font-medium">Card Metallo + OASY ASD</strong> esce in una nuova anodizzazione con l'anno inciso a vista: ti basta appoggiarla sul bancone dei locali e rifugi convenzionati di Sassello per avere subito le agevolazioni dedicate ai soci attivi. Sei già tesserato <strong class="text-[#ebe6dd] font-medium">OASY ASD</strong>? La ritiri senza costi aggiuntivi appena fai il primo acquisto o lavoro da <strong class="text-[#ebe6dd] font-medium">30,00 €</strong> in bottega.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 6: RIMANDO ESSENZIALE A OASY ASD -->
+    <section id="oasy" class="py-14 px-4 sm:px-6 border-b border-white/[0.11] bg-[#0e0e0d]">
+      <div class="max-w-7xl mx-auto">
+        <div class="border border-white/[0.14] bg-[#161514] p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <span class="block text-xs font-mono-tech text-[#c4532d]">
+              Associazione Sportiva Dilettantistica • Sassello & Beigua
+            </span>
+            <h2 class="font-display-raw text-2xl sm:text-4xl tracking-wide text-[#ebe6dd]">
+              OASY — Outdoor Activity Sassello & You
+            </h2>
+            <p class="text-sm text-[#9e9990] leading-relaxed">
+              Per tracciati del territorio, uscite sociali in calendario e tesseramento sportivo fai riferimento direttamente al portale della nostra ASD.
+            </p>
+          </div>
+
+          <a
+            href="https://www.asdoasy.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="h-11 px-6 bg-[#ebe6dd] hover:bg-white text-[#0e0e0d] font-mono-tech font-medium text-xs inline-flex items-center justify-center gap-2 shrink-0 transition-colors duration-150"
+          >
+            <span>Vai su www.asdoasy.it</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER UFFICIALE & DATI FISCALI -->
+    <footer class="py-12 px-4 sm:px-6 bg-[#161514] text-xs text-[#9e9990]">
+      <div class="max-w-7xl mx-auto space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/[0.10]">
+          <div class="space-y-2">
+            <div class="font-display-raw text-xl tracking-wide text-[#ebe6dd]">
+              Outsider Sassello <span class="font-mono-tech text-sm text-[#c4532d]">/// 17046</span>
+            </div>
+            <p class="text-[#ebe6dd]">Piazza della Concezione 11 e 12, 17046 Sassello (SV)</p>
+            <p class="text-[#69655e]">Biciclette, abbigliamento tecnico/casual, accessori e officina meccanica.</p>
+          </div>
+
+          <div class="space-y-2 font-mono-tech">
+            <div class="text-[#ebe6dd] font-semibold font-sans text-sm">Orari bottega e officina</div>
+            <p class="text-[#9e9990]">Martedì – Domenica: 09:00 – 12:30 / 15:30 – 19:00</p>
+            <p class="text-[#c4532d]">Lunedì: Chiuso</p>
+          </div>
+
+          <div class="space-y-2 font-mono-tech">
+            <div class="text-[#ebe6dd] font-semibold font-sans text-sm">Contatti diretti e social</div>
+            <p>
+              Tel / WhatsApp:
+              <a href="https://wa.me/393473590128" target="_blank" rel="noopener noreferrer" class="text-[#ebe6dd] hover:text-[#c4532d] underline">
+                +39 347 359 0128
+              </a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:outsidersassello@gmail.com" class="text-[#ebe6dd] hover:text-[#c4532d]">
+                outsidersassello@gmail.com
+              </a>
+            </p>
+            <p class="text-[#9e9990]">
+              IG: <a href="https://instagram.com/outsider_sassello" target="_blank" rel="noopener noreferrer" class="hover:text-[#ebe6dd]">@outsider_sassello</a>
+              •
+              FB: <a href="https://facebook.com/outsidersassello" target="_blank" rel="noopener noreferrer" class="hover:text-[#ebe6dd]">outsidersassello</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[#69655e] font-mono-tech">
+          <div>De Souza Jefferson — Ditta Individuale • P.IVA IT01648700092 • www.outsidersassello.it</div>
+          <div class="flex items-center gap-4">
+            <a href="#flotta" class="hover:text-[#ebe6dd] transition-colors">Flotta Hepha</a>
+            <span>•</span>
+            <a href="#officina" class="hover:text-[#ebe6dd] transition-colors">Officina</a>
+            <span>•</span>
+            <button id="footer-auth-btn" class="text-[#c4532d] hover:underline">Area soci</button>
+          </div>
+        </div>
       </div>
     </footer>
 
     <!-- DOCK BAR MOBILE -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-stone-100 border-t-4 border-green-950 grid grid-cols-4 z-40 text-center font-mono text-[10px] font-black uppercase">
-      <a href="#" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300">
-        <span class="text-base">🚲</span>
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#161514]/95 border-t border-white/[0.14] grid grid-cols-4 z-40 text-center text-xs font-mono-tech text-[#9e9990]">
+      <a href="#flotta" class="py-2.5 flex flex-col items-center gap-1 text-[#ebe6dd]">
+        <svg class="w-4 h-4 text-[#c4532d]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="5.5" cy="17.5" r="3.5" />
+          <circle cx="18.5" cy="17.5" r="3.5" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2" />
+        </svg>
+        <span>Flotta</span>
+      </a>
+      <a href="#bottega" class="py-2.5 flex flex-col items-center gap-1 hover:text-[#ebe6dd]">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+        </svg>
         <span>Bottega</span>
       </a>
-      <a href="#wallet" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300 bg-yellow-400/30">
-        <span class="text-base">🪪</span>
-        <span>Tessera</span>
+      <a href="#officina" class="py-2.5 flex flex-col items-center gap-1 hover:text-[#ebe6dd]">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" />
+        </svg>
+        <span>Officina</span>
       </a>
-      <a href="#alerts" class="py-2.5 flex flex-col items-center gap-0.5 border-r-2 border-green-950 hover:bg-yellow-300">
-        <span class="text-base">🚨</span>
-        <span>Scorte</span>
-      </a>
-      <a href="#asd-oasy" class="py-2.5 flex flex-col items-center gap-0.5 hover:bg-yellow-300">
-        <span class="text-base">🌲</span>
-        <span>OASY ASD</span>
+      <a href="#tessera" class="py-2.5 flex flex-col items-center gap-1 hover:text-[#ebe6dd]">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="1" />
+          <line x1="2" y1="10" x2="22" y2="10" />
+        </svg>
+        <span>Card</span>
       </a>
     </nav>
 
   </div>
 
-  <!-- SCRIPT LOGICA PROFILO PERSONALE & PWA -->
+  <!-- SCRIPT COMPLETO: FLOTTA HEPHA, 3 CARD CASHBACK EURO (0% / 5% / 10%), BANCONE PIN & PWA -->
   <script is:inline>
-    // 1. REGISTRAZIONE SERVICE WORKER
+    const SHOP_WHATSAPP = '393473590128';
+    const ADMIN_PIN = '1704';
+
+    function formatEuro(val) {
+      return Number(val || 0).toFixed(2).replace('.', ',');
+    }
+
+    // 1. SERVICE WORKER
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch((err) => console.log('SW fail:', err));
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
       });
     }
 
-    // 2. SISTEMA DI INSTALLAZIONE HOME
+    // 2. CONFIGURATORE PACCHETTI FLOTTA HEPHA (55 / 69 / 89 / 129 €)
+    let rentalState = {
+      pack: 'Mezza Giornata + Aperitivo (4h • Mar–Dom)',
+      price: 69,
+      cashbackEligible: true,
+      weekdayOnly: false,
+      size: 'M (168-180 cm)'
+    };
+
+    const rentalDateInput = document.getElementById('rental-date-input');
+    if (rentalDateInput) {
+      rentalDateInput.value = new Date().toISOString().split('T')[0];
+    }
+
+    function updateRentalUI() {
+      const priceLabel = document.getElementById('rental-cta-price');
+      const summaryLine = document.getElementById('rental-summary-line');
+      const bonusNote = document.getElementById('rental-bonus-note');
+
+      if (priceLabel) priceLabel.textContent = `— ${rentalState.price},00 €`;
+      if (summaryLine) {
+        summaryLine.textContent = `${rentalState.pack} • Taglia ${rentalState.size.split(' ')[0]}`;
+      }
+      if (bonusNote) {
+        if (rentalState.cashbackEligible) {
+          const cb5 = formatEuro(rentalState.price * 0.05);
+          const cb10 = formatEuro(rentalState.price * 0.10);
+          bonusNote.textContent = `Con Card: maturi ${cb5} € (Legno 5%) o ${cb10} € (Metallo 10%)`;
+          bonusNote.className = 'text-[#4d7c5b] font-mono-tech';
+        } else {
+          bonusNote.textContent = 'Solo Mar–Ven • Cauzione 300 € al banco • Zero GPX e 0% cashback';
+          bonusNote.className = 'text-[#c4532d] font-mono-tech';
+        }
+      }
+    }
+
+    function bindOptionGroup(selector, onSelect) {
+      document.querySelectorAll(selector).forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(selector).forEach((b) => {
+            b.classList.remove('border-[#c4532d]', 'bg-[#1f1e1c]');
+            b.classList.add('border-white/[0.10]', 'bg-[#0e0e0d]');
+          });
+          btn.classList.remove('border-white/[0.10]', 'bg-[#0e0e0d]');
+          btn.classList.add('border-[#c4532d]', 'bg-[#1f1e1c]');
+          onSelect(btn);
+          updateRentalUI();
+        });
+      });
+    }
+
+    bindOptionGroup('.rental-pack-btn', (btn) => {
+      rentalState.pack = btn.dataset.pack;
+      rentalState.price = parseInt(btn.dataset.price, 10);
+      rentalState.cashbackEligible = btn.dataset.cashbackEligible === 'true';
+      rentalState.weekdayOnly = btn.dataset.weekdayOnly === 'true';
+    });
+
+    bindOptionGroup('.rental-size-btn', (btn) => {
+      rentalState.size = btn.dataset.size;
+    });
+
+    document.getElementById('book-rental-whatsapp-btn')?.addEventListener('click', () => {
+      const dateVal = rentalDateInput?.value || '';
+      if (dateVal && rentalState.weekdayOnly) {
+        const day = new Date(dateVal + 'T12:00:00').getDay();
+        if (day === 0 || day === 6) {
+          showToast('Solo Noleggio è attivo solo da Martedì a Venerdì: scegli Mezza Giornata + Aperitivo, Giornata + Pranzo o Full Day Guidato.');
+          return;
+        }
+      }
+
+      const profile = getProfile();
+      const userRef = profile ? `${profile.name} (${profile.matricola})` : 'Nuovo cliente';
+      const cbText = rentalState.cashbackEligible
+        ? `\n• Cashback Card: ${formatEuro(rentalState.price * 0.05)} € (Legno) / ${formatEuro(rentalState.price * 0.10)} € (Metallo)`
+        : '\n• Note: Cauzione 300 € al banco (solo feriale, 0% cashback)';
+
+      const msg = encodeURIComponent(
+        `Ciao Outsider SSL /// 17046! Sono ${userRef}. Vorrei verificare disponibilità per:\n• Formula: ${rentalState.pack}\n• Bici: Hepha All Mountain 7 Alloy (Taglia ${rentalState.size})\n• Data: ${dateVal || 'da concordare'}${cbText}\n• Quota: ${rentalState.price},00 €`
+      );
+      window.open(`https://wa.me/${SHOP_WHATSAPP}?text=${msg}`, '_blank');
+    });
+
+    updateRentalUI();
+
+    // 3. PWA INSTALL
     let deferredPrompt;
     const installBar = document.getElementById('pwa-install-bar');
     const installTrigger = document.getElementById('pwa-install-trigger');
@@ -496,79 +1367,174 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
     if (isStandalone) {
-      if (installBar) installBar.classList.add('hidden');
+      installBar?.classList.add('hidden');
     } else {
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        if (installBar) installBar.classList.remove('hidden');
       });
-
-      if (installTrigger) {
-        installTrigger.addEventListener('click', async () => {
-          if (isIOS) {
-            if (iosModal) iosModal.classList.remove('hidden');
-          } else if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-              if (installBar) installBar.classList.add('hidden');
-            }
-            deferredPrompt = null;
-          } else {
-            alert("Per installare l'app, tocca i tre puntini del browser in alto a destra e seleziona 'Aggiungi a schermata Home'.");
-          }
-        });
-      }
+      installTrigger?.addEventListener('click', async () => {
+        if (isIOS) {
+          iosModal?.classList.remove('hidden');
+        } else if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') installBar?.classList.add('hidden');
+          deferredPrompt = null;
+        } else {
+          alert("Tocca i tre puntini del browser in alto a destra e seleziona 'Aggiungi a schermata Home'.");
+        }
+      });
     }
 
     document.getElementById('close-ios-modal')?.addEventListener('click', () => iosModal?.classList.add('hidden'));
     document.getElementById('dismiss-ios-modal')?.addEventListener('click', () => iosModal?.classList.add('hidden'));
 
-    // 3. GESTIONE PROFILO CLIENTE
+    // 4. GESTIONE PROFILO & 3 LIVELLI SOLO EURO (DIGITALE 0% / LEGNO 5% / METALLO 2027 10%)
     const profileModal = document.getElementById('profile-modal');
     const profileForm = document.getElementById('profile-form');
-    const userBadge = document.getElementById('user-badge');
-    const cardHolderName = document.getElementById('card-holder-name');
-    const cardHolderId = document.getElementById('card-holder-id');
-    const cassaCodeDisplay = document.getElementById('cassa-code-display');
+
+    function normalizeProfile(raw) {
+      if (!raw) return null;
+      if (typeof raw.creditEuro !== 'number') {
+        raw.creditEuro = typeof raw.bulloni === 'number' ? Math.round(raw.bulloni * 2 * 100) / 100 : 0;
+        delete raw.bulloni;
+        delete raw.pendingTopup;
+      }
+      if (!raw.tier) raw.tier = 'digitale';
+      return raw;
+    }
 
     function getProfile() {
       const data = localStorage.getItem('outsider_profile');
-      return data ? JSON.parse(data) : null;
+      if (!data) return null;
+      try {
+        return normalizeProfile(JSON.parse(data));
+      } catch {
+        return null;
+      }
     }
 
-    function saveProfile(name, phone) {
+    function setProfile(profile) {
+      const clean = normalizeProfile(profile);
+      clean.creditEuro = Math.round((clean.creditEuro || 0) * 100) / 100;
+      localStorage.setItem('outsider_profile', JSON.stringify(clean));
+      renderProfile();
+    }
+
+    function getCashbackRate(tier) {
+      if (tier === 'metallo') return 0.10;
+      if (tier === 'legno' || tier === 'metallo_base') return 0.05;
+      return 0;
+    }
+
+    function getTierMeta(tier) {
+      if (tier === 'metallo') {
+        return {
+          badge: 'Livello 03 • Card Metallo 2027 (10%)',
+          badgeClass: 'text-[#c4532d] font-medium',
+          note: 'Card Metallo Edizione 2027 attiva: 10% di cashback in Euro, tessera OASY ASD + copertura CSEN, priorità cavalletto 48h e convenzioni nei locali partner di Sassello.'
+        };
+      }
+      if (tier === 'metallo_base') {
+        return {
+          badge: 'Card Metallo (Quota ASD scaduta • 5%)',
+          badgeClass: 'text-[#9e9990] font-medium',
+          note: 'Quota annuale OASY ASD non rinnovata: il tuo credito resta salvo e maturi il 5% in bottega. Rinnova i 20,00 € ASD al banco per ritirare la Card del nuovo anno e tornare al 10% + convenzioni.'
+        };
+      }
+      if (tier === 'legno') {
+        return {
+          badge: 'Livello 02 • Card Legno (5%)',
+          badgeClass: 'text-[#4d7c5b] font-medium',
+          note: 'Card Legno attiva: 5% di cashback in Euro sugli acquisti validi, blocco gratuito 24h sui capi contati e nessuna scadenza sul credito.'
+        };
+      }
+      return {
+        badge: 'Livello 01 • Matricola Digitale (0%)',
+        badgeClass: 'text-[#ebe6dd] font-medium',
+        note: 'Passa al banco con un primo acquisto o lavoro da almeno 30,00 €: ritiri gratis la Card Legno (5%) oppure aggiungi 20,00 € per la Card Metallo 2027 + OASY ASD (10%).'
+      };
+    }
+
+    function openAuthModal() {
+      const profile = getProfile();
+      const title = document.getElementById('modal-profile-title');
+      const submitBtn = document.getElementById('profile-submit-btn');
+      const exportBtn = document.getElementById('export-token-btn');
+      const logoutBtn = document.getElementById('logout-profile-btn');
+      const nameInput = document.getElementById('input-name');
+      const phoneInput = document.getElementById('input-phone');
+
+      if (profile) {
+        title.textContent = `Socio ${profile.matricola}`;
+        nameInput.value = profile.name;
+        phoneInput.value = profile.phone;
+        submitBtn.textContent = 'Aggiorna dati anagrafici';
+        exportBtn.classList.remove('hidden');
+        logoutBtn.classList.remove('hidden');
+      } else {
+        title.textContent = 'Attiva Matricola Digitale';
+        nameInput.value = '';
+        phoneInput.value = '';
+        submitBtn.textContent = 'Attiva Matricola Digitale (Gratuita)';
+        exportBtn.classList.add('hidden');
+        logoutBtn.classList.add('hidden');
+      }
+      profileModal?.classList.remove('hidden');
+    }
+
+    function createOrUpdateProfile(name, phone) {
+      const existing = getProfile();
+      if (existing) {
+        existing.name = name;
+        existing.phone = phone;
+        setProfile(existing);
+        return false;
+      }
       const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const matricola = `SSL-${randomNum}`;
-      const profile = { name, phone, matricola, bulloni: 5 }; // 5 Bulloni omaggio
-      localStorage.setItem('outsider_profile', JSON.stringify(profile));
-      return profile;
+      const profile = {
+        name,
+        phone,
+        matricola: `SSL-${randomNum}`,
+        tier: 'digitale',
+        creditEuro: 0
+      };
+      setProfile(profile);
+      return true;
     }
 
     function renderProfile() {
       const profile = getProfile();
-      const bDisplay = document.getElementById('wallet-balance-display');
-      const hDisplay = document.getElementById('header-bulloni-count');
-      const eDisplay = document.getElementById('euro-balance-display');
+      const authLabel = document.getElementById('header-auth-label');
+      const walletPill = document.getElementById('header-wallet-pill');
+      const guestLock = document.getElementById('wallet-guest-lock');
+      const memberCard = document.getElementById('wallet-member-card');
 
       if (profile) {
-        if (userBadge) userBadge.textContent = `● Socio: ${profile.name} (${profile.matricola})`;
-        if (cardHolderName) cardHolderName.textContent = profile.name;
-        if (cardHolderId) cardHolderId.textContent = `MATRICOLA: ${profile.matricola}`;
-        if (cassaCodeDisplay) cassaCodeDisplay.textContent = profile.matricola;
+        authLabel.textContent = profile.matricola;
+        walletPill.classList.remove('hidden');
 
-        if (bDisplay) bDisplay.textContent = profile.bulloni;
-        if (hDisplay) hDisplay.textContent = profile.bulloni;
-        if (eDisplay) eDisplay.textContent = (profile.bulloni * 2).toFixed(2);
+        guestLock.classList.add('hidden');
+        memberCard.classList.remove('hidden');
+
+        document.getElementById('card-holder-name').textContent = profile.name;
+        document.getElementById('card-holder-id').textContent = `Matricola: ${profile.matricola} • Tel: ${profile.phone}`;
+        document.getElementById('cassa-code-display').textContent = profile.matricola;
+        document.getElementById('wallet-euro-display').textContent = formatEuro(profile.creditEuro);
+        document.getElementById('header-euro-count').textContent = `${formatEuro(profile.creditEuro)} €`;
+
+        const meta = getTierMeta(profile.tier || 'digitale');
+        const badgeEl = document.getElementById('card-tier-badge');
+        badgeEl.textContent = meta.badge;
+        badgeEl.className = meta.badgeClass;
+        document.getElementById('tier-benefits-note').textContent = meta.note;
       } else {
-        if (userBadge) userBadge.textContent = '● Ospite non registrato';
-        if (cardHolderName) cardHolderName.textContent = 'OSPITE TEMPORANEO';
-        if (cardHolderId) cardHolderId.textContent = 'MATRICOLA: NESSUNA';
-        if (cassaCodeDisplay) cassaCodeDisplay.textContent = 'SSL-OSPITE';
-        if (bDisplay) bDisplay.textContent = '0';
-        if (hDisplay) hDisplay.textContent = '0';
-        if (eDisplay) eDisplay.textContent = '0.00';
+        authLabel.textContent = 'Area soci';
+        walletPill.classList.add('hidden');
+
+        guestLock.classList.remove('hidden');
+        memberCard.classList.add('hidden');
       }
     }
 
@@ -577,93 +1543,166 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (t) {
         t.textContent = msg;
         t.classList.remove('hidden');
-        setTimeout(() => t.classList.add('hidden'), 2500);
+        setTimeout(() => t.classList.add('hidden'), 3600);
       }
     }
 
-    document.getElementById('edit-profile-btn')?.addEventListener('click', () => profileModal?.classList.remove('hidden'));
-    document.getElementById('hero-setup-profile')?.addEventListener('click', () => profileModal?.classList.remove('hidden'));
+    document.getElementById('edit-profile-btn')?.addEventListener('click', openAuthModal);
+    document.getElementById('wallet-guest-cta')?.addEventListener('click', openAuthModal);
+    document.getElementById('tier1-activate-btn')?.addEventListener('click', openAuthModal);
+    document.getElementById('card-backup-cta')?.addEventListener('click', openAuthModal);
+    document.getElementById('footer-auth-btn')?.addEventListener('click', openAuthModal);
+    document.getElementById('close-profile-modal')?.addEventListener('click', () => profileModal?.classList.add('hidden'));
 
     profileForm?.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('input-name').value.trim();
       const phone = document.getElementById('input-phone').value.trim();
       if (name && phone) {
-        saveProfile(name, phone);
+        const isNew = createOrUpdateProfile(name, phone);
+        profileModal?.classList.add('hidden');
+        showToast(isNew ? 'Matricola Digitale attiva: passa al banco per Card Legno o Card Metallo 2027' : 'Dati socio aggiornati');
+      }
+    });
+
+    document.getElementById('export-token-btn')?.addEventListener('click', async () => {
+      const profile = getProfile();
+      if (!profile) return;
+      const token = btoa(unescape(encodeURIComponent(JSON.stringify(profile))));
+      try {
+        await navigator.clipboard.writeText(token);
+        showToast('Codice backup copiato negli appunti');
+      } catch {
+        prompt('Copia manualmente questo codice di ripristino:', token);
+      }
+    });
+
+    document.getElementById('import-token-btn')?.addEventListener('click', () => {
+      const token = prompt('Incolla qui il tuo codice backup Outsider:');
+      if (!token) return;
+      try {
+        const parsed = normalizeProfile(JSON.parse(decodeURIComponent(escape(atob(token.trim())))));
+        if (parsed && parsed.matricola && typeof parsed.creditEuro === 'number') {
+          setProfile(parsed);
+          profileModal?.classList.add('hidden');
+          showToast(`Bentornato ${parsed.name}: saldo ${formatEuro(parsed.creditEuro)} € ripristinato`);
+        } else {
+          showToast('Codice non valido');
+        }
+      } catch {
+        showToast('Codice corrotto o non valido');
+      }
+    });
+
+    document.getElementById('logout-profile-btn')?.addEventListener('click', () => {
+      if (confirm('Vuoi uscire dal tuo profilo su questo telefono? Assicurati di aver salvato il codice backup.')) {
+        localStorage.removeItem('outsider_profile');
         profileModal?.classList.add('hidden');
         renderProfile();
-        showToast('BENVENUTO! PROFILO ATTIVO + 5 BULLONI ACCREDITATI!');
+        showToast('Disconnesso dal dispositivo');
       }
     });
 
-    document.getElementById('reset-profile-btn')?.addEventListener('click', () => {
-      if (confirm('Vuoi cancellare i tuoi dati e i tuoi Bulloni da questo telefono?')) {
-        localStorage.removeItem('outsider_profile');
-        renderProfile();
-        showToast('Profilo rimosso.');
-      }
+    // 5. TERMINALE BANCONE (PIN 1704)
+    const adminModal = document.getElementById('admin-modal');
+    const pinStep = document.getElementById('admin-pin-step');
+    const actionsStep = document.getElementById('admin-actions-step');
+
+    document.getElementById('open-admin-btn')?.addEventListener('click', () => {
+      const profile = getProfile();
+      if (!profile) return openAuthModal();
+      pinStep.classList.remove('hidden');
+      actionsStep.classList.add('hidden');
+      document.getElementById('admin-pin-input').value = '';
+      adminModal?.classList.remove('hidden');
     });
 
-    // Ricarica Bulloni (Simulazione con avviso cassa / predisposta a Stripe)
-    document.querySelectorAll('.charge-btn').forEach((btn) => {
+    document.getElementById('close-admin-modal')?.addEventListener('click', () => adminModal?.classList.add('hidden'));
+
+    document.getElementById('admin-pin-submit')?.addEventListener('click', () => {
+      const val = document.getElementById('admin-pin-input').value;
+      if (val !== ADMIN_PIN) {
+        showToast('PIN errato: accesso negato');
+        return;
+      }
+      pinStep.classList.add('hidden');
+      actionsStep.classList.remove('hidden');
+    });
+
+    document.querySelectorAll('.set-tier-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        let profile = getProfile();
-        if (!profile) {
-          profileModal?.classList.remove('hidden');
-          return;
-        }
-        const pack = parseInt(btn.dataset.pack, 10);
-        const bonus = parseInt(btn.dataset.bonus, 10);
-        const price = btn.dataset.price;
-        
-        // Per ora accredita localmente e avvisa per il saldo al banco
-        profile.bulloni += pack + bonus;
-        localStorage.setItem('outsider_profile', JSON.stringify(profile));
-        renderProfile();
-        showToast(`+${pack + bonus} BULLONI PRENOTATI! Salda ${price}€ al bancone.`);
+        const profile = getProfile();
+        if (!profile) return;
+        const newTier = btn.dataset.setTier;
+        profile.tier = newTier;
+        setProfile(profile);
+        showToast(`Supporto socio aggiornato (${Math.round(getCashbackRate(newTier) * 100)}% cashback)`);
       });
     });
 
-    // Blocca Pezzi
+    document.getElementById('apply-auto-cashback')?.addEventListener('click', () => {
+      const profile = getProfile();
+      const inputEl = document.getElementById('admin-receipt-amount');
+      const spend = parseFloat((inputEl.value || '').replace(',', '.'));
+      if (!profile || isNaN(spend) || spend <= 0) {
+        showToast('Inserisci un importo scontrino valido in Euro');
+        return;
+      }
+      const rate = getCashbackRate(profile.tier);
+      if (rate === 0) {
+        showToast('Seleziona prima Card Legno (5%) o Metallo 2027 (10%) per accreditare cashback');
+        return;
+      }
+      const earned = Math.round(spend * rate * 100) / 100;
+      profile.creditEuro = Math.round((profile.creditEuro + earned) * 100) / 100;
+      inputEl.value = '';
+      setProfile(profile);
+      adminModal?.classList.add('hidden');
+      showToast(`Scontrino ${formatEuro(spend)} € → accreditati +${formatEuro(earned)} € (${Math.round(rate * 100)}%)`);
+    });
+
+    document.getElementById('apply-manual-delta')?.addEventListener('click', () => {
+      const profile = getProfile();
+      const inputEl = document.getElementById('manual-euro-delta');
+      const delta = parseFloat((inputEl.value || '').replace(',', '.'));
+      if (!profile || isNaN(delta) || delta === 0) return;
+      if (profile.creditEuro + delta < 0) {
+        showToast('Credito insufficiente per questo scarico');
+        return;
+      }
+      profile.creditEuro = Math.round((profile.creditEuro + delta) * 100) / 100;
+      inputEl.value = '';
+      setProfile(profile);
+      adminModal?.classList.add('hidden');
+      showToast(`Movimento registrato: ${delta > 0 ? '+' : ''}${formatEuro(delta)} €`);
+    });
+
+    // 6. BLOCCO GRATUITO 24 ORE SUI CAPI IN GIACENZA LIMITATA (RISERVATO CARD LEGNO & METALLO)
     document.querySelectorAll('.lock-item-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        let profile = getProfile();
+        const profile = getProfile();
         if (!profile) {
-          profileModal?.classList.remove('hidden');
+          showToast('Attiva la Matricola o passa al banco per ritirare Card Legno / Card Metallo');
+          openAuthModal();
           return;
         }
-        const cost = parseInt(btn.dataset.bulloni, 10);
-        const item = btn.dataset.item;
-        if (profile.bulloni >= cost) {
-          profile.bulloni -= cost;
-          localStorage.setItem('outsider_profile', JSON.stringify(profile));
-          renderProfile();
-          showToast(`BLOCCATO! ${item} riservato a tuo nome.`);
-          btn.textContent = 'RISERVATO A TE ✓';
-          btn.disabled = true;
-          btn.classList.add('opacity-50');
-        } else {
-          showToast('BULLONI INSUFFICIENTI! Ricarica il tuo wallet.');
+        if ((profile.tier || 'digitale') === 'digitale') {
+          showToast('Il blocco gratuito 24h è attivo per i titolari di Card Legno e Card Metallo');
+          return;
         }
+        const item = btn.dataset.item;
+        if (!confirm(`Confermi di voler bloccare gratuitamente in bottega per 24 ore "${item}"?`)) return;
+
+        btn.textContent = 'Bloccato a tuo nome (24h)';
+        btn.disabled = true;
+        btn.classList.add('opacity-50');
+        const waMsg = encodeURIComponent(
+          `Ciao Outsider SSL /// 17046! Sono ${profile.name} (${profile.matricola}). Vorrei bloccare per 24h in bottega "${item}" con la mia Card.`
+        );
+        showToast(`Riservato per 24 ore: ${item}`);
+        window.open(`https://wa.me/${SHOP_WHATSAPP}?text=${waMsg}`, '_blank');
       });
     });
-
-    // Test Alert
-    document.getElementById('test-alert-btn')?.addEventListener('click', () => {
-      showToast('🚨 NOTIFICA BOTTEGA: Ultimo Casco FOX rimasto!');
-    });
-
-    // Countdown Tubo Zincato
-    let timeLeft = 259200;
-    const cd = document.getElementById('countdown-pwa');
-    setInterval(() => {
-      if (timeLeft > 0) timeLeft--;
-      const d = Math.floor(timeLeft / 86400);
-      const h = Math.floor((timeLeft % 86400) / 3600);
-      const m = Math.floor((timeLeft % 3600) / 60);
-      const s = timeLeft % 60;
-      if (cd) cd.textContent = `${d}G ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-    }, 1000);
 
     renderProfile();
   </script>
